@@ -1,0 +1,8 @@
+#docker/
+#Jenkins/
+#k8s/
+#nginx/
+
+public/
+package.json
+package-lock.json

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { blackA } from '@radix-ui/colors';
 import * as SwitchPrimitive from '@radix-ui/react-switch';
 
 // WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)', '&:focus': {

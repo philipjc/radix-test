@@ -2,8 +2,10 @@
   "trailingComma": "es5",
   "singleQuote": true,
   "bracketSpacing": true,
+  "bracketSameLine": false,
+  "proseWrap": "never",
   "printWidth": 125,
   "arrowParens": "avoid",
   "tabWidth": 2,
-  "singleAttributePerLine": true
+  "singleAttributePerLine": false
 }

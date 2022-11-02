@@ -9,11 +9,11 @@ const StyledSwitch = styled(SwitchPrimitive.Root)`
   height: 25px;
   border-radius: 9999px;
   position: relative;
-  box-shadow: ${props => props.theme.dark.colors.blue4};
+  box-shadow: ${props => props.theme.colors.blue4};
 
-  background-color: ${props => props.theme.dark.colors.blue4};
-  color: ${props => props.theme.dark.colors.blue11};
-  border-color: ${props => props.theme.dark.colors.blue7};
+  background-color: ${props => props.theme.colors.blue4};
+  color: ${props => props.theme.colors.blue11};
+  border-color: ${props => props.theme.colors.blue7};
 
   &[data-state='checked'] {
     background-color: black;
@@ -26,7 +26,7 @@ const StyledThumb = styled(SwitchPrimitive.Thumb)`
   height: 21px;
   background-color: grey;
   border-radius: 9999px;
-  box-shadow: 02px 2px ${props => props.theme.dark.colors.blue4};
+  box-shadow: 02px 2px ${props => props.theme.colors.blue4};
   transition: transform 100ms;
   transform: translateX(2px);
   will-change: transform;
@@ -50,11 +50,11 @@ const Label = styled('label')`
   padding-right: 15px;
 `;
 
-const darkModeSwitchStitches = {
+const darkModeSwitchStyles = {
   StyledSwitch,
   StyledThumb,
   Flex,
   Label,
 };
 
-export default darkModeSwitchStitches;
+export default darkModeSwitchStyles;

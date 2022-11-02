@@ -1,25 +1,22 @@
 import React, { ReactElement } from 'react';
+import { useAppSelector } from '../../app/hooks';
+import { selectDarkMode } from '../../features/general/generalSlice';
+import MainNavigationStyles from './main-navigation.styled';
+
+const { SectionStyled } = MainNavigationStyles;
 
 export function MainNavigation(): ReactElement {
+  const isDarkMode = useAppSelector(selectDarkMode);
+
+  console.log(isDarkMode);
+
   return (
-    <section className="section">
+    <SectionStyled className="section">
       <div className="column is-10 ml-auto mr-auto">
-        <nav
-          className="navbar"
-          role="navigation"
-          aria-label="main navigation"
-        >
+        <nav className="navbar" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
-            <a
-              className="navbar-item"
-              href="https://bulma.io"
-            >
-              <img
-                src="https://bulma.io/images/bulma-logo.png"
-                width="112"
-                height="28"
-                alt="alt text"
-              />
+            <a className="navbar-item" href="https://bulma.io">
+              <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" alt="alt text" />
             </a>
 
             <a
@@ -36,57 +33,33 @@ export function MainNavigation(): ReactElement {
             </a>
           </div>
 
-          <div
-            id="navbarBasicExample"
-            className="navbar-menu"
-          >
+          <div id="navbarBasicExample" className="navbar-menu">
             <div className="navbar-start">
-              <a
-                href="/"
-                className="navbar-item"
-              >
+              <a href="/" className="navbar-item">
                 Home
               </a>
 
-              <a
-                href="/"
-                className="navbar-item"
-              >
+              <a href="/" className="navbar-item">
                 Documentation
               </a>
 
               <div className="navbar-item has-dropdown is-hoverable">
-                <a
-                  href="/"
-                  className="navbar-link"
-                >
+                <a href="/" className="navbar-link">
                   More
                 </a>
 
                 <div className="navbar-dropdown">
-                  <a
-                    href="/"
-                    className="navbar-item"
-                  >
+                  <a href="/" className="navbar-item">
                     About
                   </a>
-                  <a
-                    href="/"
-                    className="navbar-item"
-                  >
+                  <a href="/" className="navbar-item">
                     Jobs
                   </a>
-                  <a
-                    href="/"
-                    className="navbar-item"
-                  >
+                  <a href="/" className="navbar-item">
                     Contact
                   </a>
                   <hr className="navbar-divider" />
-                  <a
-                    href="/"
-                    className="navbar-item"
-                  >
+                  <a href="/" className="navbar-item">
                     Report an issue
                   </a>
                 </div>
@@ -96,16 +69,10 @@ export function MainNavigation(): ReactElement {
             <div className="navbar-end">
               <div className="navbar-item">
                 <div className="buttons">
-                  <a
-                    href="/"
-                    className="button is-primary"
-                  >
+                  <a href="/" className="button is-primary">
                     <strong>Sign up</strong>
                   </a>
-                  <a
-                    href="/"
-                    className="button is-light"
-                  >
+                  <a href="/" className="button is-light">
                     Log in
                   </a>
                 </div>
@@ -114,6 +81,6 @@ export function MainNavigation(): ReactElement {
           </div>
         </nav>
       </div>
-    </section>
+    </SectionStyled>
   );
 }

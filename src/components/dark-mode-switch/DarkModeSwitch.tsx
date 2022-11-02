@@ -3,13 +3,13 @@ import darkModeSwitchStyles from './dark-mode-switch.styled';
 import { useAppDispatch } from '../../app/hooks';
 import { darkMode } from '../../features/general/generalSlice';
 
-const { Flex, Label, StyledSwitch, StyledThumb } = darkModeSwitchStyles;
+const { Flex, Label, StyledSwitch, StyledThumb, SwitchSectionStyled } = darkModeSwitchStyles;
 
 export function DarkModeSwitch(): ReactElement {
   const dispatch = useAppDispatch();
 
   return (
-    <section className="section">
+    <SwitchSectionStyled className="section pt-2 pb-2">
       <div className="column is-10 ml-auto mr-auto">
         <form>
           <Flex>
@@ -20,6 +20,6 @@ export function DarkModeSwitch(): ReactElement {
           </Flex>
         </form>
       </div>
-    </section>
+    </SwitchSectionStyled>
   );
 }

@@ -50,16 +50,11 @@ const Label = styled.label`
   padding-right: 15px;
 `;
 
-const SwitchSectionStyled = styled.section`
-  background-color: ${props => props.theme.colors.blue2};
-`;
-
 const darkModeSwitchStyles = {
   StyledSwitch,
   StyledThumb,
   Flex,
   Label,
-  SwitchSectionStyled,
 };
 
 export default darkModeSwitchStyles;

@@ -1,38 +1,35 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-// import { AppThunk } from '../../app/store';
-import { fetchCount } from './generalAPI';
+import { getMealCategoriesAsync, iMealCategoriesList } from './api/mealCategories';
 
-export interface GeneralStateFetching {
+export interface iGeneralStateFetching {
   status: 'idle' | 'loading' | 'failed';
 }
 
-export interface GeneralState {
+export interface iGeneralState {
   darkMode: boolean;
   value: number;
-  fetching: GeneralStateFetching;
+  fetching: iGeneralStateFetching;
+  foodCategories: iMealCategoriesList;
 }
 
-const initialState: GeneralState = {
+const initialState: iGeneralState = {
   darkMode: false,
   value: 0,
   fetching: {
     status: 'idle',
   },
+  foodCategories: {
+    categories: [],
+  },
 };
-
-export const incrementAsync = createAsyncThunk('general/fetchCount', async (amount: number) => {
-  const response = await fetchCount(amount);
-  // The value we return becomes the `fulfilled` action payload
-  return response.data;
-});
 
 export const generalSlice = createSlice({
   name: 'general',
   initialState,
 
   reducers: {
-    darkMode: (state: GeneralState) => {
+    darkMode: (state: iGeneralState) => {
       state.darkMode = !state.darkMode;
       console.log('Dark mode: ', state.darkMode);
     },
@@ -40,15 +37,19 @@ export const generalSlice = createSlice({
 
   extraReducers: builder => {
     builder
-      .addCase(incrementAsync.pending, (state: GeneralState) => {
-        state.fetching.status = 'loading';
+      .addCase(getMealCategoriesAsync.pending, (state: iGeneralState) => {
+        console.log('pending');
       })
-      .addCase(incrementAsync.fulfilled, (state: GeneralState, action: PayloadAction<number>) => {
-        state.fetching.status = 'idle';
-        state.value += action.payload;
-      })
-      .addCase(incrementAsync.rejected, (state: GeneralState) => {
-        state.fetching.status = 'failed';
+      .addCase(
+        getMealCategoriesAsync.fulfilled,
+        (state: iGeneralState, action: PayloadAction<iMealCategoriesList>) => {
+          const { payload } = action;
+          console.log('fulfilled');
+          console.log(payload);
+        }
+      )
+      .addCase(getMealCategoriesAsync.rejected, (state: iGeneralState) => {
+        console.log('rejected');
       });
   },
 });

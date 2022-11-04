@@ -1,10 +1,14 @@
 import React from 'react';
 import SharedStyled from '../../shared-styled/SharedStyled';
 import MainHeroImage from '../../assets/images/hero-food-chop.jpg';
+import { useMeals } from '../../features/general/hooks/useMeals';
 
 const { DarkerDMSectionStyled } = SharedStyled;
 
 export function MainHero() {
+  const { categories } = useMeals();
+  console.log(categories);
+
   return (
     <DarkerDMSectionStyled className="hero is-large main-hero">
       <div className="hero-body is-flex is-justify-content-space-between pt-6 pb-6">

@@ -4,8 +4,8 @@
   "bracketSpacing": true,
   "bracketSameLine": false,
   "proseWrap": "never",
-  "printWidth": 125,
+  "printWidth": 100,
   "arrowParens": "avoid",
   "tabWidth": 2,
-  "singleAttributePerLine": false
+  "singleAttributePerLine": false,
 }

@@ -23,8 +23,8 @@ const DarkerDMSectionStyled = styled.section`
 
 const DMDivStyled = styled.section`
   color: ${props => props.theme.colors.gray12};
-  background-color: ${props => props.theme.colors.blue2};
   transition: background-color 0.8s;
+  background-color: ${props => props.theme.colors.blue4};
 `;
 
 const DMAnchorBackground = styled.a`

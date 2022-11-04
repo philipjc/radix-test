@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store';
-import { getMealCategoriesAsync, iMealCategoriesList } from './api/mealCategories';
-import { getMealByCategoryAsync, iCategoryMealList } from './api/mealsByCategory';
+import { RootState } from '../../../app/store';
+import { getMealCategoriesAsync, iMealCategoriesList } from '../api/mealCategories';
+import { getMealByCategoryAsync, iCategoryMealList } from '../api/mealsByCategory';
 
 export interface iGeneralStateFetching {
   status: 'idle' | 'loading' | 'failed';

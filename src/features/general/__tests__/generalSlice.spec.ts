@@ -1,4 +1,4 @@
-import { generalSlice } from '../generalSlice';
+import { generalSlice } from '../state/generalSlice';
 
 describe('General reducer', () => {
   it('will return', () => {

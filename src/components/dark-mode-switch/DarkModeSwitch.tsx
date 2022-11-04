@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { useAppDispatch } from '../../app/hooks';
-import { darkMode } from '../../features/general/generalSlice';
+import { darkMode } from '../../features/general/state/generalSlice';
 import darkModeSwitchStyles from './dark-mode-switch.styled';
 import SharedStyles from '../../shared-styled/SharedStyled';
 

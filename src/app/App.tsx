@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import { useAppSelector } from './hooks';
 import './App.css';
 
-import { selectDarkMode } from '../features/general/generalSlice';
+import { selectDarkMode } from '../features/general/state/generalSlice';
 import { MainNavigation } from '../components/navigation/MainNavigation';
 import { DarkModeSwitch } from '../components/dark-mode-switch/DarkModeSwitch';
 import { MainHero } from '../components/main-hero/MainHero';

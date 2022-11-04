@@ -3,7 +3,7 @@ import { getMealCategoriesAsync } from '../api/mealCategories';
 import { iMealCategoriesList } from '../api/mealCategories';
 import { useAppDispatch } from '../../../app/hooks';
 import { useAppSelector } from '../../../app/hooks';
-import { selectFoodCategoriesState, selectFoodState } from '../generalSlice';
+import { selectFoodCategoriesState, selectFoodState } from '../state/generalSlice';
 import { getMealByCategoryAsync, iCategoryMealList, iMeal } from '../api/mealsByCategory';
 
 interface FoodState {

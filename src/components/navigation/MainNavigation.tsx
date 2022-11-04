@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { useAppSelector } from '../../app/hooks';
-import { selectDarkMode } from '../../features/general/generalSlice';
+import { selectDarkMode } from '../../features/general/state/generalSlice';
 import SharedStyled from '../../shared-styled/SharedStyled';
 
 const { DMAnchorBackground, DarkerDMSectionStyled, DMDivStyled } = SharedStyled;
@@ -16,7 +16,12 @@ export function MainNavigation(): ReactElement {
         <nav className="navbar" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
             <a className="navbar-item" href="https://bulma.io">
-              <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" alt="alt text" />
+              <img
+                src="https://bulma.io/images/bulma-logo.png"
+                width="112"
+                height="28"
+                alt="alt text"
+              />
             </a>
 
             <DMAnchorBackground

@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import * as SwitchPrimitive from '@radix-ui/react-switch';
 
-// WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)', '&:focus': {
-
 const StyledSwitch = styled(SwitchPrimitive.Root)`
   all: unset;
   width: 42px;
@@ -14,7 +12,10 @@ const StyledSwitch = styled(SwitchPrimitive.Root)`
   background-color: ${props => props.theme.colors.blue6};
   color: ${props => props.theme.colors.blue11};
   border-color: ${props => props.theme.colors.blue11};
-
+  &:focus {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0);
+  }
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   &[data-state='checked'] {
     background-color: black;
   }

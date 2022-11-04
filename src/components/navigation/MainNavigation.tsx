@@ -3,7 +3,7 @@ import { useAppSelector } from '../../app/hooks';
 import { selectDarkMode } from '../../features/general/generalSlice';
 import SharedStyled from '../../shared-styled/SharedStyled';
 
-const { DarkModeAnchorBackground } = SharedStyled;
+const { DMAnchorBackground, DarkerDMSectionStyled, DMDivStyled } = SharedStyled;
 
 export function MainNavigation(): ReactElement {
   const isDarkMode = useAppSelector(selectDarkMode);
@@ -11,7 +11,7 @@ export function MainNavigation(): ReactElement {
   console.log(isDarkMode);
 
   return (
-    <section className="section">
+    <DarkerDMSectionStyled className="section">
       <div className="column is-10 ml-auto mr-auto">
         <nav className="navbar" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
@@ -19,7 +19,7 @@ export function MainNavigation(): ReactElement {
               <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" alt="alt text" />
             </a>
 
-            <DarkModeAnchorBackground
+            <DMAnchorBackground
               href="/"
               role="button"
               className="navbar-burger"
@@ -30,10 +30,10 @@ export function MainNavigation(): ReactElement {
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
-            </DarkModeAnchorBackground>
+            </DMAnchorBackground>
           </div>
 
-          <div id="navbarBasicExample" className="navbar-menu">
+          <DMDivStyled id="navbarBasicExample" className="navbar-menu">
             <div className="navbar-start">
               <a href="/" className="navbar-item">
                 Home
@@ -78,9 +78,9 @@ export function MainNavigation(): ReactElement {
                 </div>
               </div>
             </div>
-          </div>
+          </DMDivStyled>
         </nav>
       </div>
-    </section>
+    </DarkerDMSectionStyled>
   );
 }

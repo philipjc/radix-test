@@ -2,12 +2,24 @@ import React from 'react';
 import SharedStyled from '../../shared-styled/SharedStyled';
 import MainHeroImage from '../../assets/images/hero-food-chop.jpg';
 import { useMeals } from '../../features/general/hooks/useMeals';
+import { Puff } from 'react-loader-spinner';
+import { iCategory } from '../../features/general/api/mealCategories';
 
 const { DarkerDMSectionStyled } = SharedStyled;
 
 export function MainHero() {
-  const { categories } = useMeals();
-  console.log(categories);
+  const {
+    categories,
+    food: { foodState, fetchMeals },
+  } = useMeals();
+
+  const veg = categories.categories
+    ? categories.categories.find((cat: iCategory) => cat.strCategory === 'Vegetarian')
+    : null;
+
+  const foodList = foodState;
+
+  console.log(foodList);
 
   return (
     <DarkerDMSectionStyled className="hero is-large main-hero">
@@ -26,22 +38,32 @@ export function MainHero() {
           <div className="container">
             <ul>
               <li className="is-active">
-                <a href="/">Overview</a>
+                {categories?.fetching ? (
+                  <Puff
+                    height="20"
+                    width="20"
+                    radius={1}
+                    color="#0f3058"
+                    ariaLabel="puff-loading"
+                    wrapperStyle={{ display: 'flex', justifyContent: 'center' }}
+                    wrapperClass=""
+                    visible={true}
+                  />
+                ) : (
+                  <button onClick={() => fetchMeals()}>{veg?.strCategory}</button>
+                )}
               </li>
               <li>
-                <a href="/">Modifiers</a>
+                <a href="/">Vegan</a>
               </li>
               <li>
-                <a href="/">Grid</a>
+                <a href="/">Chicken</a>
               </li>
               <li>
-                <a href="/">Elements</a>
+                <a href="/">Beef</a>
               </li>
               <li>
-                <a href="/">Components</a>
-              </li>
-              <li>
-                <a href="/">Layout</a>
+                <a href="/">Deserts</a>
               </li>
             </ul>
           </div>

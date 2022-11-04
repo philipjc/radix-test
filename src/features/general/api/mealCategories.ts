@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export interface iMeal {
+export interface iCategory {
   idCategory: string;
   strCategory: string;
   strCategoryThumb: string;
@@ -8,27 +8,30 @@ export interface iMeal {
 }
 
 export interface iMealCategoriesList {
-  categories: Array<iMeal>;
+  fetching: boolean;
+  categories: Array<iCategory>;
 }
 
-function getMealCategories(): Promise<iMealCategoriesList> {
+function fetchMealCategories(): Promise<iMealCategoriesList> {
   const url = `https://www.themealdb.com/api/json/v1/1/categories.php`;
 
   return new Promise<iMealCategoriesList>(resolve => {
-    fetch(url, {
-      method: 'GET',
-      referrerPolicy: 'no-referrer',
-    }).then(response => resolve(response.json()));
+    setTimeout(() => {
+      fetch(url, {
+        method: 'GET',
+        referrerPolicy: 'no-referrer',
+      }).then(response => resolve(response.json()));
+    }, 3000);
   });
 }
 
 export const getMealCategoriesAsync = createAsyncThunk(
-  'general/fetchCount',
+  'general/fetchMealCategories',
   async (): Promise<iMealCategoriesList> => {
     try {
-      return await getMealCategories();
+      return await fetchMealCategories();
     } catch (e) {
-      console.log('Failed getMealCategories:', e);
+      console.log('Failed fetchMealCategories:', e);
       return new Promise<any>(resolve => resolve(e));
     }
   }

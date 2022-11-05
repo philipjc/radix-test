@@ -21,37 +21,43 @@ export function MealRecipe(): ReactElement {
   return (
     <DarkerDMSectionStyled className="section">
       <div className="column is-10 m-auto has-text-left">
-        <div className="card">
+        <div className="card pt-6">
           <div className="column is-flex">
-            <div className="card-image column">
+            <div className="card-image column mr-6 ml-6">
               <figure className="is-4by3">
                 <img src={recipe['strMealThumb']} alt="Placeholder image" />
               </figure>
             </div>
-            <div className="column has-text-centered">
-              <p className="title is-4">{recipe['strMeal']}</p>
-              <h3>Ingredients</h3>
-              <ul className="ml-0 pl-4">
-                {ingredientsKeysArray.map((ingredient: string, idx: number) => {
-                  return (
-                    ingredient && (
-                      <li className="ml-0 pl-0" key={`ingredient-${idx}`}>
-                        {ingredient}
-                      </li>
-                    )
-                  );
-                })}
-              </ul>
+            <div className="column content has-text-left ml-6">
+              <h2 className="title is-2">{recipe['strMeal']}</h2>
+              <div className="column">
+                <h3>Ingredients</h3>
+                <ul className="ml-0 pl-4">
+                  {ingredientsKeysArray.map((ingredient: string, idx: number) => {
+                    return (
+                      ingredient && (
+                        <li className="ml-0 pl-0 is-size-5" key={`ingredient-${idx}`}>
+                          {ingredient}
+                        </li>
+                      )
+                    );
+                  })}
+                </ul>
+              </div>
             </div>
           </div>
 
           <div className="card-content">
             <div className="content is-flex p-6">
               <div className="column">
-                <h3>Instructions</h3>
-                {recipe['strInstructions'].split('.').map((line: string, idx: number) => (
-                  <p key={`Instruction-line-${idx}`}>{line}</p>
-                ))}
+                <h3 className="title is-3">Instructions</h3>
+                <ul className="ml-0 pl-4">
+                  {recipe['strInstructions'].split('.').map((line: string, idx: number) => (
+                    <li className="ml-0 mb-2 pl-0 is-size-5" key={`Instruction-line-${idx}`}>
+                      {line}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>

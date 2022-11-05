@@ -13,6 +13,9 @@ import { MealRecipe } from './pages/MealRecipe';
 
 import darkTheme from '../themes/dark-theme';
 import regularTheme from '../themes/regular-theme';
+import AppStyles from './AppStyled';
+
+const { DMAppBackground } = AppStyles;
 
 function App(): ReactElement {
   const isDarkMode = useAppSelector(selectDarkMode);
@@ -21,7 +24,7 @@ function App(): ReactElement {
 
   return (
     <ThemeProvider theme={currentTheme}>
-      <div className="App">
+      <DMAppBackground className="App">
         <DarkModeSwitch />
         <BrowserRouter>
           <MainNavigation />
@@ -45,7 +48,7 @@ function App(): ReactElement {
             />
           </Routes>
         </BrowserRouter>
-      </div>
+      </DMAppBackground>
     </ThemeProvider>
   );
 }

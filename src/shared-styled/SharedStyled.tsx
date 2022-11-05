@@ -6,9 +6,18 @@ const DMSectionStyled = styled.section`
 `;
 
 const DarkerDMSectionStyled = styled.section`
-  // border-bottom: 2px solid ${props => props.theme.colors.blue6};
   background-color: ${props => props.theme.colors.blue3};
   transition: background-color 0.8s;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  p,
+  a {
+    color: ${props => props.theme.colors.gray12};
+  }
 
   // Main Nav
   .navbar-brand {
@@ -25,6 +34,12 @@ const DMDivStyled = styled.section`
   color: ${props => props.theme.colors.gray12};
   transition: background-color 0.8s;
   background-color: ${props => props.theme.colors.blue4};
+
+  h1,
+  h2,
+  h3 {
+    color: ${props => props.theme.colors.gray12};
+  }
 `;
 
 const DMAnchorBackground = styled.a`

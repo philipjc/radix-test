@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import { useMealRecipe } from '../../features/general/hooks/useMealRecipe';
 import SharedStyled from '../../shared-styled/SharedStyled';
 
-const { DarkerDMSectionStyled } = SharedStyled;
+const { DarkerDMSectionStyled, DMDivStyled } = SharedStyled;
 
 export function MealRecipe(): ReactElement {
   const { recipeState } = useMealRecipe();
@@ -18,7 +18,7 @@ export function MealRecipe(): ReactElement {
   return (
     <DarkerDMSectionStyled className="section">
       <div className="column is-10 m-auto has-text-left">
-        <div className="card pt-6">
+        <DMDivStyled className="card pt-6">
           <div className="column is-flex">
             <div className="card-image column mr-6 ml-6">
               <figure className="is-4by3">
@@ -50,16 +50,20 @@ export function MealRecipe(): ReactElement {
                 <h3 className="title is-3">Instructions</h3>
                 <ul className="ml-0 pl-4">
                   {strInstructions &&
-                    strInstructions.split('.').map((line: string, idx: number) => (
-                      <li className="ml-0 mb-2 pl-0 is-size-5" key={`Instruction-line-${idx}`}>
-                        {line}
-                      </li>
-                    ))}
+                    strInstructions.split('.').map((line: string, idx: number) => {
+                      return (
+                        line && (
+                          <li className="ml-0 mb-2 pl-0 is-size-5" key={`Instruction-line-${idx}`}>
+                            {line}
+                          </li>
+                        )
+                      );
+                    })}
                 </ul>
               </div>
             </div>
           </div>
-        </div>
+        </DMDivStyled>
       </div>
     </DarkerDMSectionStyled>
   );

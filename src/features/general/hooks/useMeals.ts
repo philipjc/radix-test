@@ -20,6 +20,7 @@ export function useMeals(): iUseMeals {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    /* eslint-disable */
     dispatch(getMealCategoriesAsync());
   }, []);
 

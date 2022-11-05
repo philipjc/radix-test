@@ -88,7 +88,6 @@ export const generalSlice = createSlice({
         getMealRecipeAsync.fulfilled,
         (state: iGeneralState, action: PayloadAction<iMealRecipeState>) => {
           const { payload } = action;
-          console.log(payload);
           state.recipe.meals = [...payload.meals];
           state.recipe.fetching = false;
         }

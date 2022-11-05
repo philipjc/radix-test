@@ -23,8 +23,8 @@ function App(): ReactElement {
     <ThemeProvider theme={currentTheme}>
       <div className="App">
         <DarkModeSwitch />
-        <MainNavigation />
         <BrowserRouter>
+          <MainNavigation />
           <Routes>
             <Route
               path="/"

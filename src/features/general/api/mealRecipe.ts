@@ -78,8 +78,7 @@ export const getMealRecipeAsync = createAsyncThunk(
     try {
       return await fetchMealRecipe(type);
     } catch (e) {
-      console.log('Failed get recipe by id:', e);
-      return new Promise<any>(resolve => resolve(e));
+      throw new Error('Failed get recipe by id');
     }
   }
 );

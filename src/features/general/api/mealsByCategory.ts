@@ -30,8 +30,7 @@ export const getMealByCategoryAsync = createAsyncThunk(
     try {
       return await fetchMealByCategory(type);
     } catch (e) {
-      console.log('Failed get meal by category:', e);
-      return new Promise<any>(resolve => resolve(e));
+      throw new Error('Failed get meal by category');
     }
   }
 );

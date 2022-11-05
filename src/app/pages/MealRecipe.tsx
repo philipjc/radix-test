@@ -6,7 +6,6 @@ const { DarkerDMSectionStyled } = SharedStyled;
 
 export function MealRecipe(): ReactElement {
   const { recipeState } = useMealRecipe();
-  console.log(recipeState?.meals[0]);
 
   const recipeKeys = Object.keys(recipeState?.meals[0] || {});
   const ingredientProperty = 'strIngredient';
@@ -14,9 +13,7 @@ export function MealRecipe(): ReactElement {
     .filter((key: string) => key.includes(ingredientProperty))
     .map((ingredientName: string) => recipeState?.meals[0][ingredientName]);
 
-  console.log(ingredientsKeysArray);
-
-  const recipe = recipeState?.meals[0];
+  const { strMealThumb, strMeal, strInstructions } = recipeState?.meals[0] || {};
 
   return (
     <DarkerDMSectionStyled className="section">
@@ -25,11 +22,11 @@ export function MealRecipe(): ReactElement {
           <div className="column is-flex">
             <div className="card-image column mr-6 ml-6">
               <figure className="is-4by3">
-                <img src={recipe['strMealThumb']} alt="Placeholder image" />
+                <img src={strMealThumb} alt={strMeal} />
               </figure>
             </div>
             <div className="column content has-text-left ml-6">
-              <h2 className="title is-2">{recipe['strMeal']}</h2>
+              <h2 className="title is-2">{strMeal}</h2>
               <div className="column">
                 <h3>Ingredients</h3>
                 <ul className="ml-0 pl-4">
@@ -52,11 +49,12 @@ export function MealRecipe(): ReactElement {
               <div className="column">
                 <h3 className="title is-3">Instructions</h3>
                 <ul className="ml-0 pl-4">
-                  {recipe['strInstructions'].split('.').map((line: string, idx: number) => (
-                    <li className="ml-0 mb-2 pl-0 is-size-5" key={`Instruction-line-${idx}`}>
-                      {line}
-                    </li>
-                  ))}
+                  {strInstructions &&
+                    strInstructions.split('.').map((line: string, idx: number) => (
+                      <li className="ml-0 mb-2 pl-0 is-size-5" key={`Instruction-line-${idx}`}>
+                        {line}
+                      </li>
+                    ))}
                 </ul>
               </div>
             </div>

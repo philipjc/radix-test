@@ -13,6 +13,7 @@ export function useMealRecipe(): iUseRecipeState {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    /* eslint-disable */
     fetchRecipe();
   }, []);
 

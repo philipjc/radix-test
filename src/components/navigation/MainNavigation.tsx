@@ -1,29 +1,23 @@
 import React, { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
-import { useAppSelector } from '../../app/hooks';
-import { selectDarkMode } from '../../features/general/state/generalSlice';
 import SharedStyled from '../../shared-styled/SharedStyled';
 
 const { DMAnchorBackground, DarkerDMSectionStyled, DMDivStyled } = SharedStyled;
 
 export function MainNavigation(): ReactElement {
-  const isDarkMode = useAppSelector(selectDarkMode);
-
-  console.log(isDarkMode);
-
   return (
     <DarkerDMSectionStyled className="section">
       <div className="column is-10 ml-auto mr-auto">
         <nav className="navbar" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
-            <a className="navbar-item" href="https://bulma.io">
+            <Link to={'/'} className="navbar-item">
               <img
                 src="https://bulma.io/images/bulma-logo.png"
                 width="112"
                 height="28"
                 alt="alt text"
               />
-            </a>
+            </Link>
 
             <DMAnchorBackground
               href="/"

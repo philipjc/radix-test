@@ -39,7 +39,6 @@ function App(): ReactElement {
               path="/recipe"
               element={
                 <>
-                  <MainHero />
                   <MealRecipe />
                 </>
               }

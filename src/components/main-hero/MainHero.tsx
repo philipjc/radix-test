@@ -19,7 +19,6 @@ export function MainHero(): ReactElement {
               <LazyImage />
             </figure>
           </div>
-
           <div className="hero-foot">
             <MainHeroNav />
           </div>

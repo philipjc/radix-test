@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Puff } from 'react-loader-spinner';
 import { useMeals } from '../../features/general/hooks/useMeals';
 import { iCategory } from '../../features/general/api/mealCategories';
@@ -21,7 +22,6 @@ export function MainHeroNav() {
             {categories?.fetching ? (
               <button
                 className="button"
-                onClick={() => fetchMeals()}
                 style={{
                   width: '100%',
                   border: 'none',
@@ -41,18 +41,20 @@ export function MainHeroNav() {
                 />
               </button>
             ) : (
-              <button
-                className="button"
-                onClick={() => fetchMeals()}
-                style={{
-                  width: '100%',
-                  border: 'none',
-                  borderRadius: 0,
-                  cursor: 'pointer',
-                }}
-              >
-                {veg?.strCategory}
-              </button>
+              <Link to={'/'}>
+                <button
+                  className="button"
+                  onClick={() => fetchMeals()}
+                  style={{
+                    width: '100%',
+                    border: 'none',
+                    borderRadius: 0,
+                    cursor: 'pointer',
+                  }}
+                >
+                  {veg?.strCategory}
+                </button>
+              </Link>
             )}
           </li>
           <li>

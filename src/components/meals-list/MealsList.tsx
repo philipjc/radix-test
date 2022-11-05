@@ -16,20 +16,22 @@ export function MealsList(): ReactElement {
   }: iUseMeals = useMeals();
 
   return fetching ? (
-    <Triangle
-      height="80"
-      width="80"
-      color="#4fa94d"
-      ariaLabel="triangle-loading"
-      wrapperStyle={{}}
-      visible={true}
-    />
+    <div className="content column is-flex is-justify-content-center mt-5">
+      <Triangle
+        height="80"
+        width="80"
+        color="#4fa94d"
+        ariaLabel="triangle-loading"
+        wrapperStyle={{}}
+        visible={true}
+      />
+    </div>
   ) : (
     <DarkerDMSectionStyled className="section">
       <div className="column is-10 ml-auto mr-auto">
         <div className="is-flex is-justify-content-space-between is-flex-wrap-wrap">
-          {meals.map((meal: iMeal) => (
-            <Link to={'/recipe'}>
+          {meals.map((meal: iMeal, key: string) => (
+            <Link to={'/recipe'} key={`meal-${key}`}>
               <div
                 className="card mr-2 ml-2 is-flex-grow-1"
                 style={{ maxWidth: 250, marginBottom: 80 }}

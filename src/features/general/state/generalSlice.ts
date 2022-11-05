@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../app/store';
 import { getMealCategoriesAsync, iMealCategoriesList } from '../api/mealCategories';
 import { getMealByCategoryAsync, iCategoryMealList } from '../api/mealsByCategory';
+import { getMealRecipeAsync, iMealRecipeState } from '../api/mealRecipe';
 
 export interface iGeneralStateFetching {
   status: 'idle' | 'loading' | 'failed';
@@ -13,6 +14,7 @@ export interface iGeneralState {
   fetching: iGeneralStateFetching;
   foodCategories: iMealCategoriesList;
   food: iCategoryMealList;
+  recipe: iMealRecipeState;
 }
 
 const initialState: iGeneralState = {
@@ -29,6 +31,10 @@ const initialState: iGeneralState = {
     fetching: false,
     meals: [],
   },
+  recipe: {
+    fetching: false,
+    meals: [],
+  },
 };
 
 export const generalSlice = createSlice({
@@ -38,7 +44,6 @@ export const generalSlice = createSlice({
   reducers: {
     darkMode: (state: iGeneralState) => {
       state.darkMode = !state.darkMode;
-      console.log('Dark mode: ', state.darkMode);
     },
   },
 
@@ -46,7 +51,6 @@ export const generalSlice = createSlice({
     builder
       .addCase(getMealCategoriesAsync.pending, (state: iGeneralState) => {
         state.foodCategories.fetching = true;
-        console.log('pending');
       })
       .addCase(
         getMealCategoriesAsync.fulfilled,
@@ -57,14 +61,12 @@ export const generalSlice = createSlice({
         }
       )
       .addCase(getMealCategoriesAsync.rejected, (state: iGeneralState) => {
-        console.log('rejected');
         state.foodCategories.fetching = false;
       })
 
       // Meals async
       .addCase(getMealByCategoryAsync.pending, (state: iGeneralState) => {
         state.food.fetching = true;
-        console.log('pending');
       })
       .addCase(
         getMealByCategoryAsync.fulfilled,
@@ -75,8 +77,24 @@ export const generalSlice = createSlice({
         }
       )
       .addCase(getMealByCategoryAsync.rejected, (state: iGeneralState) => {
-        console.log('rejected');
         state.food.fetching = false;
+      })
+
+      // Recipe async
+      .addCase(getMealRecipeAsync.pending, (state: iGeneralState) => {
+        state.recipe.fetching = true;
+      })
+      .addCase(
+        getMealRecipeAsync.fulfilled,
+        (state: iGeneralState, action: PayloadAction<iMealRecipeState>) => {
+          const { payload } = action;
+          console.log(payload);
+          state.recipe.meals = [...payload.meals];
+          state.recipe.fetching = false;
+        }
+      )
+      .addCase(getMealRecipeAsync.rejected, (state: iGeneralState) => {
+        state.recipe.fetching = false;
       });
   },
 });
@@ -85,6 +103,7 @@ export const { darkMode } = generalSlice.actions;
 export const selectDarkMode = (state: RootState) => state.general.darkMode;
 export const selectFoodCategoriesState = (state: RootState) => state.general.foodCategories;
 export const selectFoodState = (state: RootState) => state.general.food;
+export const selectRecipeState = (state: RootState) => state.general.recipe;
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.

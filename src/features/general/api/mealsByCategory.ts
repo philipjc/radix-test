@@ -15,10 +15,12 @@ function fetchMealByCategory(type: string = 'Vegetarian'): Promise<iCategoryMeal
   const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${type}`;
 
   return new Promise<iCategoryMealList>(resolve => {
-    fetch(url, {
-      method: 'GET',
-      referrerPolicy: 'no-referrer',
-    }).then(response => resolve(response.json()));
+    setTimeout(() => {
+      fetch(url, {
+        method: 'GET',
+        referrerPolicy: 'no-referrer',
+      }).then(response => resolve(response.json()));
+    }, 4000);
   });
 }
 

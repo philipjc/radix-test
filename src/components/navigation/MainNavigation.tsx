@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../app/hooks';
 import { selectDarkMode } from '../../features/general/state/generalSlice';
 import SharedStyled from '../../shared-styled/SharedStyled';

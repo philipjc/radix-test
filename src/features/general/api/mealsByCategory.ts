@@ -11,7 +11,7 @@ export interface iCategoryMealList {
   meals: Array<iMeal>;
 }
 
-function fetchMealByCategory(type: string = 'Vegetarian'): Promise<iCategoryMealList> {
+function fetchMealByCategory(type: string): Promise<iCategoryMealList> {
   const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${type}`;
 
   return new Promise<iCategoryMealList>(resolve => {

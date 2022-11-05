@@ -1,26 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Puff } from 'react-loader-spinner';
 import { useMeals } from '../../features/general/hooks/useMeals';
-import { iCategory } from '../../features/general/api/mealCategories';
+// import { iCategory } from '../../features/general/api/mealCategories';
+
+const CATEGORIES_AVAILABLE = [
+  'Breakfast',
+  'Starter',
+  'Vegetarian',
+  'Vegan',
+  'Pasta',
+  'Chicken',
+  'Pork',
+  'Lamb',
+];
 
 export function MainHeroNav() {
+  const [activeCat, setActiveCat] = useState('');
+
   const {
     categories,
     food: { fetchMeals },
   } = useMeals();
 
-  const categoryList = categories.categories
-    ? categories.categories.map((cat: iCategory) => cat.strCategory)
-    : [];
+  // const categoryList = categories.categories
+  //   ? categories.categories.map((cat: iCategory) => cat.strCategory)
+  //   : [];
 
   return (
     <nav className="tabs is-boxed is-fullwidth">
       <div className="container">
         <ul className="is-flex is-justify-content-space-evenly">
-          {categoryList.map((cat: string, idx: number) => {
+          {CATEGORIES_AVAILABLE.map((cat: string, idx: number) => {
             return (
-              <li className="is-active is-flex-grow-1" key={`${cat}-${idx}`}>
+              <li
+                className={activeCat === cat ? `is-active is-flex-grow-1` : `is-flex-grow-1`}
+                key={`${cat}-${idx}`}
+              >
                 {categories?.fetching ? (
                   <button
                     className="button"
@@ -46,7 +62,10 @@ export function MainHeroNav() {
                   <Link to={'/'}>
                     <button
                       className="button"
-                      onClick={() => fetchMeals(cat)}
+                      onClick={() => {
+                        setActiveCat(cat);
+                        fetchMeals(cat);
+                      }}
                       style={{
                         width: '100%',
                         border: 'none',
@@ -61,18 +80,6 @@ export function MainHeroNav() {
               </li>
             );
           })}
-          <li>
-            <a href="/">Vegan</a>
-          </li>
-          <li>
-            <a href="/">Chicken</a>
-          </li>
-          <li>
-            <a href="/">Beef</a>
-          </li>
-          <li>
-            <a href="/">Deserts</a>
-          </li>
         </ul>
       </div>
     </nav>

@@ -36,7 +36,7 @@ function App(): ReactElement {
               }
             />
             <Route
-              path="/recipe"
+              path="/recipe/:recipeId"
               element={
                 <>
                   <MealRecipe />

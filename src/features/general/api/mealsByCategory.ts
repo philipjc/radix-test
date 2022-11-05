@@ -20,7 +20,7 @@ function fetchMealByCategory(type: string = 'Vegetarian'): Promise<iCategoryMeal
         method: 'GET',
         referrerPolicy: 'no-referrer',
       }).then(response => resolve(response.json()));
-    }, 4000);
+    }, 3000);
   });
 }
 

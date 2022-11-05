@@ -16,8 +16,8 @@ export function MealsList(): ReactElement {
     },
   }: iUseMeals = useMeals();
 
-  function loadRecipe() {
-    navigate('/recipe');
+  function loadRecipe(id: string) {
+    navigate(`/recipe/${id}`);
   }
 
   return fetching ? (
@@ -35,9 +35,10 @@ export function MealsList(): ReactElement {
     <DarkerDMSectionStyled className="section">
       <div className="column is-10 ml-auto mr-auto">
         <div className="is-flex is-justify-content-space-between is-flex-wrap-wrap">
-          {meals.map((meal: iMeal, key: string) => (
+          {meals.map((meal: iMeal, idx: string) => (
             <div
-              onClick={() => loadRecipe()}
+              key={`meal-${idx}`}
+              onClick={() => loadRecipe(meal?.idMeal)}
               className="card mr-2 ml-2 is-flex-grow-1"
               style={{ maxWidth: 250, marginBottom: 80, cursor: 'pointer' }}
             >

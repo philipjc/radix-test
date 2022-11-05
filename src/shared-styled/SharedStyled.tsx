@@ -6,7 +6,7 @@ const DMSectionStyled = styled.section`
 `;
 
 const DarkerDMSectionStyled = styled.section`
-  border-bottom: 2px solid ${props => props.theme.colors.blue6};
+  // border-bottom: 2px solid ${props => props.theme.colors.blue6};
   background-color: ${props => props.theme.colors.blue3};
   transition: background-color 0.8s;
 
@@ -33,11 +33,16 @@ const DMAnchorBackground = styled.a`
   transition: background-color 0.8s;
 `;
 
+const AppConstrainSize = styled.div`
+  background-color: ${props => props.theme.colors.blue3};
+`;
+
 const SharedStyles = {
   DMAnchorBackground,
   DMSectionStyled,
   DMDivStyled,
   DarkerDMSectionStyled,
+  AppConstrainSize,
 };
 
 export default SharedStyles;

@@ -11,7 +11,7 @@ interface FoodState {
   foodState: Array<iMeal> | any;
 }
 
-interface iUseMeals {
+export interface iUseMeals {
   categories: iMealCategoriesList | any;
   food: FoodState;
 }

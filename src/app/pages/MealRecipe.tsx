@@ -51,13 +51,16 @@ export function MealRecipe(): ReactElement {
                 <ul className="ml-0 pl-4">
                   {strInstructions &&
                     strInstructions.split('.').map((line: string, idx: number) => {
-                      return (
-                        line && (
-                          <li className="ml-0 mb-2 pl-0 is-size-5" key={`Instruction-line-${idx}`}>
-                            {line}
-                          </li>
-                        )
-                      );
+                      return Number(line)
+                        ? null
+                        : line && (
+                            <li
+                              className="ml-0 mb-2 pl-0 is-size-5"
+                              key={`Instruction-line-${idx}`}
+                            >
+                              {line}
+                            </li>
+                          );
                     })}
                 </ul>
               </div>

@@ -21,7 +21,7 @@ export function MealsList(): ReactElement {
   }
 
   return (
-    <DarkerDMSectionStyled className="section">
+    <DarkerDMSectionStyled className="section is-10 pt-0">
       {fetching ? (
         <div className="column is-flex is-justify-content-center">
           <Triangle
@@ -34,16 +34,16 @@ export function MealsList(): ReactElement {
           />
         </div>
       ) : (
-        <div className="column is-10 ml-auto mr-auto">
+        <div className="column is-10 ml-auto mr-auto pb-0">
           <div className="is-flex is-justify-content-space-between is-flex-wrap-wrap">
             {meals.map((meal: iMeal, idx: string) => (
               <DMDivStyled
                 key={`meal-${idx}`}
                 onClick={() => loadRecipe(meal?.idMeal)}
-                className="card mr-2 ml-2 is-flex-grow-1"
-                style={{ maxWidth: 250, marginBottom: 80, cursor: 'pointer' }}
+                className="card mr-2 ml-2"
+                style={{ maxWidth: 350, marginBottom: 80, cursor: 'pointer' }}
               >
-                <div className="card-image">
+                <div className="card-image p-4">
                   <figure className="image is-4by3">
                     <img src={meal.strMealThumb} alt={meal.strMeal} />
                   </figure>
@@ -51,11 +51,11 @@ export function MealsList(): ReactElement {
                 <div className="card-content">
                   <div className="media">
                     <div className="media-left">
-                      <p className="title is-4 is-flex is-align-content-start">{meal.strMeal}</p>
+                      <p className="title is-5 has-text-left">{meal.strMeal}</p>
                     </div>
                   </div>
 
-                  <div className="content">
+                  <div className="content has-text-left">
                     <p>Click the card to checkout this lovely meal</p>
                   </div>
                 </div>

@@ -6,7 +6,7 @@ const { DMAnchorBackground, DarkerDMSectionStyled, DMDivStyled } = SharedStyled;
 
 export function MainNavigation(): ReactElement {
   return (
-    <DarkerDMSectionStyled className="section">
+    <DarkerDMSectionStyled className="section pb-5">
       <div className="column is-10 ml-auto mr-auto">
         <nav className="navbar" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">

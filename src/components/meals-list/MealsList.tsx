@@ -43,7 +43,7 @@ export function MealsList(): ReactElement {
                 className="card mr-2 ml-2"
                 style={{ maxWidth: 350, marginBottom: 80, cursor: 'pointer' }}
               >
-                <div className="card-image p-4">
+                <div className="card-image p-4 pb-0">
                   <figure className="image is-4by3">
                     <img src={meal.strMealThumb} alt={meal.strMeal} />
                   </figure>

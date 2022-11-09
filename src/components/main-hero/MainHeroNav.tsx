@@ -5,18 +5,17 @@ import { useMeals } from '../../features/general/hooks/useMeals';
 // import { iCategory } from '../../features/general/api/mealCategories';
 
 const CATEGORIES_AVAILABLE = [
-  'Breakfast',
-  'Starter',
-  'Vegetarian',
-  'Vegan',
-  'Pasta',
-  'Chicken',
-  'Pork',
-  'Lamb',
+  { text: 'Breakfast', id: 1 },
+  { text: 'Starter', id: 2 },
+  { text: 'Vegetarian', id: 3 },
+  { text: 'Vegan', id: 4 },
+  { text: 'Chicken', id: 5 },
+  { text: 'Pork', id: 6 },
+  { text: 'Lamb', id: 7 },
 ];
 
 export function MainHeroNav() {
-  const [activeCat, setActiveCat] = useState('');
+  const [activeCat, setActiveCat] = useState({ text: '', id: 0 });
 
   const {
     categories,
@@ -31,10 +30,12 @@ export function MainHeroNav() {
     <nav className="tabs is-boxed is-fullwidth">
       <div className="container">
         <ul className="is-flex is-justify-content-space-evenly">
-          {CATEGORIES_AVAILABLE.map((cat: string, idx: number) => {
+          {CATEGORIES_AVAILABLE.map((cat: { text: string; id: number }, idx: number) => {
             return (
               <li
-                className={activeCat === cat ? `is-active is-flex-grow-1` : `is-flex-grow-1`}
+                className={
+                  activeCat.text === cat.text ? `is-active is-flex-grow-1` : `is-flex-grow-1`
+                }
                 key={`${cat}-${idx}`}
               >
                 {categories?.fetching ? (
@@ -63,8 +64,8 @@ export function MainHeroNav() {
                     <button
                       className="button"
                       onClick={() => {
-                        setActiveCat(cat);
-                        fetchMeals(cat);
+                        setActiveCat({ text: cat.text, id: cat.id });
+                        fetchMeals(cat.text);
                       }}
                       style={{
                         width: '100%',
@@ -73,7 +74,7 @@ export function MainHeroNav() {
                         cursor: 'pointer',
                       }}
                     >
-                      {cat}
+                      {cat.text}
                     </button>
                   </Link>
                 )}

@@ -27,62 +27,53 @@ export function MainHeroNav() {
   //   : [];
 
   return (
-    <nav className="tabs is-boxed is-fullwidth">
-      <div className="container">
-        <ul className="is-flex is-justify-content-space-evenly">
-          {CATEGORIES_AVAILABLE.map((cat: { text: string; id: number }, idx: number) => {
-            return (
-              <li
-                className={
-                  activeCat.text === cat.text ? `is-active is-flex-grow-1` : `is-flex-grow-1`
-                }
-                key={`${cat}-${idx}`}
-              >
-                {categories?.fetching ? (
-                  <button
-                    className="button"
-                    style={{
-                      width: '100%',
-                      border: 'none',
-                      borderRadius: 0,
-                      cursor: 'pointer',
-                    }}
-                  >
-                    <Puff
-                      height="20"
-                      width="20"
-                      radius={1}
-                      color="#0f3058"
-                      ariaLabel="puff-loading"
-                      wrapperStyle={{ display: 'flex', justifyContent: 'center' }}
-                      wrapperClass=""
-                      visible={true}
-                    />
-                  </button>
-                ) : (
-                  <Link to={'/'}>
-                    <button
-                      className="button"
-                      onClick={() => {
-                        setActiveCat({ text: cat.text, id: cat.id });
-                        fetchMeals(cat.text);
-                      }}
-                      style={{
-                        width: '100%',
-                        border: 'none',
-                        borderRadius: 0,
-                        cursor: 'pointer',
-                      }}
-                    >
-                      {cat.text}
-                    </button>
-                  </Link>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+    <nav className="tabs is-large is-fullwidth">
+      <ul className="is-flex is-justify-content-left">
+        {CATEGORIES_AVAILABLE.map((cat: { text: string; id: number }, idx: number) => {
+          return (
+            <li
+              className={
+                activeCat.text === cat.text ? `is-active is-flex-grow-1` : `is-flex-grow-1`
+              }
+              key={`${cat}-${idx}`}
+              style={{ borderBottom: '1px solid grey' }}
+            >
+              {categories?.fetching ? (
+                <Link
+                  to={''}
+                  // style={{
+                  //   width: '100%',
+                  //   border: 'none',
+                  //   borderRadius: 0,
+                  //   cursor: 'pointer',
+                  // }}
+                >
+                  <Puff
+                    height="20"
+                    width="20"
+                    radius={1}
+                    color="#0f3058"
+                    ariaLabel="puff-loading"
+                    wrapperStyle={{ display: 'flex', justifyContent: 'center' }}
+                    wrapperClass=""
+                    visible={true}
+                  />
+                </Link>
+              ) : (
+                <Link
+                  to={'/'}
+                  onClick={() => {
+                    setActiveCat({ text: cat.text, id: cat.id });
+                    fetchMeals(cat.text);
+                  }}
+                >
+                  {cat.text}
+                </Link>
+              )}
+            </li>
+          );
+        })}
+      </ul>
     </nav>
   );
 }

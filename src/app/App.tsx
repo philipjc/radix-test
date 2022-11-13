@@ -5,11 +5,10 @@ import { useAppSelector } from './hooks';
 import './App.css';
 
 import { selectDarkMode } from '../features/general/state/generalSlice';
-import { MainNavigation } from '../components/navigation/MainNavigation';
 import { DarkModeSwitch } from '../components/dark-mode-switch/DarkModeSwitch';
 import { MainHero } from '../components/main-hero/MainHero';
 import { MealsList } from '../components/meals-list/MealsList';
-import { MealRecipe } from './pages/MealRecipe';
+import { MealRecipe } from './pages/meal-recipe/MealRecipe';
 
 import darkTheme from '../themes/dark-theme';
 import regularTheme from '../themes/regular-theme';
@@ -27,7 +26,6 @@ function App(): ReactElement {
       <DMAppBackground className="App">
         <DarkModeSwitch />
         <BrowserRouter>
-          <MainNavigation />
           <Routes>
             <Route
               path="/"

@@ -19,6 +19,10 @@ const DarkerDMSectionStyled = styled.section`
     color: ${props => props.theme.colors.gray12};
   }
 
+  .card {
+    color: ${props => props.theme.colors.gray12};
+  }
+
   // Main Nav
   .navbar-brand {
     background-color: ${props => props.theme.colors.blue4};
@@ -26,7 +30,6 @@ const DarkerDMSectionStyled = styled.section`
 
   // Main Hero
   .hero-body {
-    background-color: ${props => props.theme.colors.blue5};
   }
 `;
 

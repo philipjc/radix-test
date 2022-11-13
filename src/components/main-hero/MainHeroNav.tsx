@@ -22,10 +22,6 @@ export function MainHeroNav() {
     food: { fetchMeals },
   } = useMeals();
 
-  // const categoryList = categories.categories
-  //   ? categories.categories.map((cat: iCategory) => cat.strCategory)
-  //   : [];
-
   return (
     <nav className="tabs is-large is-fullwidth">
       <ul className="is-flex is-justify-content-left">
@@ -39,15 +35,7 @@ export function MainHeroNav() {
               style={{ borderBottom: '1px solid grey' }}
             >
               {categories?.fetching ? (
-                <Link
-                  to={''}
-                  // style={{
-                  //   width: '100%',
-                  //   border: 'none',
-                  //   borderRadius: 0,
-                  //   cursor: 'pointer',
-                  // }}
-                >
+                <Link to={''}>
                   <Puff
                     height="20"
                     width="20"

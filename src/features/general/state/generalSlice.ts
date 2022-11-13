@@ -34,6 +34,7 @@ const initialState: iGeneralState = {
   recipe: {
     fetching: false,
     meals: [],
+    tabView: 0,
   },
 };
 
@@ -44,6 +45,9 @@ export const generalSlice = createSlice({
   reducers: {
     darkMode: (state: iGeneralState) => {
       state.darkMode = !state.darkMode;
+    },
+    changeRecipeTab: (state: iGeneralState) => {
+      state.recipe.tabView = state.recipe.tabView === 0 ? 1 : 0;
     },
   },
 
@@ -98,7 +102,7 @@ export const generalSlice = createSlice({
   },
 });
 
-export const { darkMode } = generalSlice.actions;
+export const { darkMode, changeRecipeTab } = generalSlice.actions;
 export const selectDarkMode = (state: RootState) => state.general.darkMode;
 export const selectFoodCategoriesState = (state: RootState) => state.general.foodCategories;
 export const selectFoodState = (state: RootState) => state.general.food;

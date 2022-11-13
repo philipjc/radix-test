@@ -2,7 +2,7 @@ import React from 'react';
 // import MainHeroImage from '../../assets/images/hero-food-chop.jpg';
 
 // const billMurrayPic = 'https://www.fillmurray.com/640/360';
-const baconPic = 'https://baconmockup.com/640/360';
+const baconPic = 'https://baconmockup.com/640/160';
 // const randomPic = 'https://loremflickr.com/640/360';
 
 export function LazyImage() {

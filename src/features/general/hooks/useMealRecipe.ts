@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
-import { getMealRecipeAsync } from '../api/mealRecipe';
+import { getMealRecipeAsync, iMealRecipeState } from '../api/mealRecipe';
 import { useAppDispatch } from '../../../app/hooks';
 import { useAppSelector } from '../../../app/hooks';
-import { selectRecipeState } from '../state/generalSlice';
+import { selectRecipeState, changeRecipeTab } from '../state/generalSlice';
 import { useParams } from 'react-router';
 
 interface iUseRecipeState {
-  fetchRecipe: any;
-  recipeState: any;
+  fetchRecipe: () => {};
+  recipeState: iMealRecipeState;
+  changeRecipeTab: any;
 }
 
 const BACK_UP_MEAL_CHICKEN_TERIYAKI_CASSEROLE = '52772';
@@ -31,5 +32,6 @@ export function useMealRecipe(): iUseRecipeState {
   return {
     fetchRecipe,
     recipeState,
+    changeRecipeTab,
   };
 }

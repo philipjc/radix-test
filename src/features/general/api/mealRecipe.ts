@@ -59,6 +59,7 @@ export interface iMealRecipe {
 export interface iMealRecipeState {
   fetching: boolean;
   meals: Array<iMealRecipe>;
+  tabView: number;
 }
 
 function fetchMealRecipe(recipeId: string): Promise<any> {

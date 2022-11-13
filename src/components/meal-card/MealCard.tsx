@@ -4,18 +4,13 @@ import { useNavigate } from 'react-router';
 
 const { DMDivStyled } = sharedStyled;
 
-export function MealCard({ meal, idx }: any) {
+export function MealCard({ meal }: any) {
   const navigate = useNavigate();
   const { idMeal, strMeal } = meal;
 
-  function loadRecipe(id: string) {
-    navigate(`/recipe/${id}`);
-  }
-
   return (
     <DMDivStyled
-      key={`meal-${idx}`}
-      onClick={() => loadRecipe(idMeal)}
+      onClick={() => navigate(`/recipe/${idMeal}`)}
       className="card mr-2 ml-2"
       style={{ maxWidth: 250, marginBottom: 80, cursor: 'pointer' }}
     >
@@ -25,7 +20,7 @@ export function MealCard({ meal, idx }: any) {
         </figure>
       </div>
       <div className="card-content">
-        <div className="media">
+        <div className="media is-block">
           <div className="media-left" style={{ flexShrink: 'none !important' }}>
             <p className="title is-5 has-text-left">{strMeal}</p>
           </div>

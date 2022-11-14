@@ -5,13 +5,13 @@ import { Puff } from 'react-loader-spinner';
 import {
   IconDefinition,
   faEgg,
-  faAtom,
   faHourglass,
   faLeaf,
   faCarrot,
   faDrumstickBite,
   faBacon,
   faCow,
+  faFish,
 } from '@fortawesome/free-solid-svg-icons';
 import sharedStyled from '../../shared-styled/SharedStyled';
 
@@ -22,9 +22,10 @@ const CATEGORIES_AVAILABLE = [
   { text: 'Starter', id: 2, icon: faHourglass },
   { text: 'Vegetarian', id: 3, icon: faCarrot },
   { text: 'Vegan', id: 4, icon: faLeaf },
-  { text: 'Chicken', id: 5, icon: faDrumstickBite },
-  { text: 'Pork', id: 6, icon: faBacon },
-  { text: 'Beef', id: 7, icon: faCow },
+  { text: 'Seafood', id: 5, icon: faFish },
+  { text: 'Chicken', id: 6, icon: faDrumstickBite },
+  { text: 'Pork', id: 7, icon: faBacon },
+  { text: 'Beef', id: 8, icon: faCow },
 ];
 
 export function Categories() {
@@ -52,8 +53,8 @@ export function Categories() {
                   style={{
                     marginBottom: '2em',
                     flex: 1,
-                    maxWidth: '165px',
-                    minWidth: '165px',
+                    maxWidth: '145px',
+                    minWidth: '145px',
                     cursor: 'pointer',
                   }}
                 >

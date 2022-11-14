@@ -1,8 +1,6 @@
 import React, { ReactElement } from 'react';
-import SharedStyled from '../../shared-styled/SharedStyled';
 import { LazyImage } from '../lazy-image/LazyImage';
-import { MainHeroNav } from './MainHeroNav';
-
+import SharedStyled from '../../shared-styled/SharedStyled';
 const { DarkerDMSectionStyled, AppConstrainSize } = SharedStyled;
 
 export function MainHero(): ReactElement {
@@ -11,7 +9,7 @@ export function MainHero(): ReactElement {
       <AppConstrainSize className="column is-10 ml-auto mr-auto m-auto">
         <DarkerDMSectionStyled className="hero is-large main-hero column is-12 m-auto">
           <div
-            className="columns is-mobile hero-body is-flex is-justify-content-space-between p-4"
+            className="columns is-mobile hero-body is-flex is-justify-content-space-between p-0"
             style={{ position: 'relative' }}
           >
             <div className="column p-5" style={{ position: 'absolute', zIndex: 1 }}>
@@ -26,9 +24,8 @@ export function MainHero(): ReactElement {
               </figure>
             </div>
           </div>
-          <div className="hero-foot">
-            <MainHeroNav />
-          </div>
+          {/*<div className="hero-foot">*/}
+          {/*</div>*/}
         </DarkerDMSectionStyled>
       </AppConstrainSize>
     </DarkerDMSectionStyled>

@@ -9,6 +9,7 @@ import { DarkModeSwitch } from '../components/dark-mode-switch/DarkModeSwitch';
 import { MainHero } from '../components/main-hero/MainHero';
 import { MealsList } from '../components/meals-list/MealsList';
 import { MealRecipe } from './pages/meal-recipe/MealRecipe';
+import { Categories } from '../components/categories/Categories';
 
 import darkTheme from '../themes/dark-theme';
 import regularTheme from '../themes/regular-theme';
@@ -32,6 +33,7 @@ function App(): ReactElement {
               element={
                 <>
                   <MainHero />
+                  <Categories />
                   <MealsList />
                 </>
               }

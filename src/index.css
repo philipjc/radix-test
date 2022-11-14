@@ -1,17 +1,134 @@
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  monospace;
 }
 
 .white-color {
   color: #fff !important;
+}
+
+/*Shimmer*/
+.shimmer-card {
+  border-radius: 2px;
+  padding: 20px;
+  background: #ffffff;
+  opacity: .4;
+}
+
+.shimmer {
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-name: placeHolderShimmer;
+  -webkit-animation-timing-function: linear;
+  background: #d8d8d8 linear-gradient(to right, #d8d8d8 0%, #bdbdbd 20%, #d8d8d8 40%, #d8d8d8 100%) no-repeat;
+  background-size: 800px 104px;
+  height: 104px;
+  position: relative
+}
+
+.shimmer div {
+  background: #ffffff;
+  height: 6px;
+  left: 0;
+  position: absolute;
+  right: 0
+}
+
+._2iwo {
+  height: 200px;
+  padding: 12px
+}
+
+div._2iwr {
+  height: 40px;
+  left: 40px;
+  right: auto;
+  top: 0;
+  width: 8px;
+}
+
+div._2iws {
+  height: 8px;
+  left: 48px;
+  top: 0
+}
+
+div._2iwt {
+  left: 136px;
+  top: 8px
+}
+
+div._2iwu {
+  height: 12px;
+  left: 48px;
+  top: 14px
+}
+
+div._2iwv {
+  left: 100px;
+  top: 26px
+}
+
+div._2iww {
+  height: 10px;
+  left: 48px;
+  top: 32px
+}
+
+div._2iwx {
+  height: 20px;
+  top: 40px
+}
+
+div._2iwy {
+  left: 410px;
+  top: 60px
+}
+
+div._2iwz {
+  height: 13px;
+  top: 66px
+}
+
+div._2iw- {
+  left: 440px;
+  top: 79px
+}
+
+div._2iw_ {
+  height: 13px;
+  top: 85px
+}
+
+div._2ix0 {
+  left: 178px;
+  top: 98px
+}
+
+@-webkit-keyframes placeHolderShimmer {
+  0% {
+    background-position: -468px 0
+  }
+  100% {
+    background-position: 468px 0
+  }
+}
+
+@-webkit-keyframes prideShimmer {
+  from {
+    background-position: top left
+  }
+  to {
+    background-position: top right
+  }
 }

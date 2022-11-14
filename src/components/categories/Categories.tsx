@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useMeals } from '../../features/general/hooks/useMeals';
-import { Puff } from 'react-loader-spinner';
 import {
   IconDefinition,
   faEgg,
@@ -28,11 +28,17 @@ const CATEGORIES_AVAILABLE = [
   { text: 'Beef', id: 8, icon: faCow },
 ];
 
+const HoverStyle = styled.div`
+  &:hover {
+    opacity: 0.6 !important;
+    color: #444;
+  }
+`;
+
 export function Categories() {
   const [activeCat, setActiveCat] = useState({ text: '', id: 0 });
 
   const {
-    categories,
     food: { fetchMeals },
   } = useMeals();
 
@@ -43,14 +49,15 @@ export function Categories() {
           {CATEGORIES_AVAILABLE.map(
             (cat: { text: string; id: number; icon: IconDefinition }, idx: number) => {
               return (
-                <div
+                <HoverStyle
                   key={`category-${idx}`}
-                  className="card mr-2 ml-2"
+                  className="card mr-2 ml-2 category-card"
                   onClick={() => {
                     setActiveCat({ text: cat.text, id: cat.id });
                     fetchMeals(cat.text);
                   }}
                   style={{
+                    opacity: activeCat.text !== cat.text ? '.4' : 1,
                     marginBottom: '2em',
                     flex: 1,
                     maxWidth: '145px',
@@ -69,7 +76,7 @@ export function Categories() {
                       <p className="has-text-left"> {cat.text}</p>
                     </div>
                   </div>
-                </div>
+                </HoverStyle>
               );
             }
           )}

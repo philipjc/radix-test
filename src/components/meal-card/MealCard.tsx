@@ -4,6 +4,27 @@ import { useNavigate } from 'react-router';
 
 const { DMDivStyled } = sharedStyled;
 
+export function GreekMealCard() {
+  return (
+    <div className="card shimmer-card mb-6" style={{ width: '300px' }}>
+      <div className="shimmer">
+        <div className="_2iwr"></div>
+        <div className="_2iws"></div>
+        <div className="_2iwt"></div>
+        <div className="_2iwu"></div>
+        <div className="_2iwv"></div>
+        <div className="_2iww"></div>
+        <div className="_2iwx"></div>
+        <div className="_2iwy"></div>
+        <div className="_2iwz"></div>
+        <div className="_2iw-"></div>
+        <div className="_2iw_"></div>
+        <div className="_2ix0"></div>
+      </div>
+    </div>
+  );
+}
+
 export function MealCard({ meal }: any) {
   const navigate = useNavigate();
   const { idMeal, strMeal } = meal;

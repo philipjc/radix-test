@@ -24,6 +24,7 @@ export function MainHero(): ReactElement {
               </figure>
             </div>
           </div>
+
           {/*<div className="hero-foot">*/}
           {/*</div>*/}
         </DarkerDMSectionStyled>

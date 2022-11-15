@@ -4,7 +4,6 @@ import { ThemeProvider } from 'styled-components';
 import { useAppSelector } from './hooks';
 import './App.css';
 
-import { selectDarkMode } from '../features/general/state/generalSlice';
 import { DarkModeSwitch } from '../components/dark-mode-switch/DarkModeSwitch';
 import { MainHero } from '../components/main-hero/MainHero';
 import { MealsList } from '../components/meals-list/MealsList';
@@ -14,6 +13,7 @@ import { Categories } from '../components/categories/Categories';
 import darkTheme from '../themes/dark-theme';
 import regularTheme from '../themes/regular-theme';
 import AppStyles from './AppStyled';
+import { selectDarkMode } from '../features/general/state/accessors';
 
 const { DMAppBackground } = AppStyles;
 

@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react';
-import { LazyImage } from '../lazy-image/LazyImage';
 import SharedStyled from '../../shared-styled/SharedStyled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';

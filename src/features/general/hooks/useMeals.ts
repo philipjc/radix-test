@@ -1,20 +1,10 @@
 import { useEffect } from 'react';
 import { getMealCategoriesAsync } from '../api/mealCategories';
-import { iMealCategoriesList } from '../api/mealCategories';
 import { useAppDispatch } from '../../../app/hooks';
 import { useAppSelector } from '../../../app/hooks';
-import { selectFoodCategoriesState, selectFoodState } from '../state/generalSlice';
-import { getMealByCategoryAsync, iCategoryMealList, iMeal } from '../api/mealsByCategory';
-
-interface FoodState {
-  fetchMeals: iCategoryMealList | any;
-  foodState: Array<iMeal> | any;
-}
-
-export interface iUseMeals {
-  categories: iMealCategoriesList | any;
-  food: FoodState;
-}
+import { getMealByCategoryAsync } from '../api/mealsByCategory';
+import { selectFoodCategoriesState, selectFoodState } from '../state/accessors';
+import { iUseMeals } from '../state/interfaces/index.js';
 
 export function useMeals(): iUseMeals {
   const dispatch = useAppDispatch();

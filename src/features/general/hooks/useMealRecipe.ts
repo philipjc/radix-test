@@ -2,8 +2,9 @@ import { useEffect } from 'react';
 import { getMealRecipeAsync, iMealRecipeState } from '../api/mealRecipe';
 import { useAppDispatch } from '../../../app/hooks';
 import { useAppSelector } from '../../../app/hooks';
-import { selectRecipeState, changeRecipeTab } from '../state/generalSlice';
+import { changeRecipeTab } from '../state/actions';
 import { useParams } from 'react-router';
+import { selectRecipeState } from '../state/accessors';
 
 interface iUseRecipeState {
   fetchRecipe: () => {};

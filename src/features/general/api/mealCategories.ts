@@ -1,16 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
-export interface iCategory {
-  idCategory: string;
-  strCategory: string;
-  strCategoryThumb: string;
-  strCategoryDescription: string;
-}
-
-export interface iMealCategoriesList {
-  fetching: boolean;
-  categories: Array<iCategory>;
-}
+import { iMealCategoriesList } from '../state/interfaces/index.js';
 
 function fetchMealCategories(): Promise<iMealCategoriesList> {
   const url = `https://www.themealdb.com/api/json/v1/1/categories.php`;

@@ -13,8 +13,9 @@ const reducers = {
   changeRecipeTab: (state: iGeneralState) => {
     state.recipe.tabView = state.recipe.tabView === 0 ? 1 : 0;
   },
-  changeCurrentCategory: (state: iGeneralState) => {
-    state.recipe.tabView = state.recipe.tabView === 0 ? 1 : 0;
+  changeCurrentCategory: (state: iGeneralState, action: PayloadAction<any>) => {
+    const { payload } = action;
+    state.userFoodCategories.current = payload;
   },
 };
 

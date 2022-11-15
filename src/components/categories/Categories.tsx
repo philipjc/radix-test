@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useMeals } from '../../features/general/hooks/useMeals';
 import { useCategory } from '../../features/general/hooks/useCategory';
+import { useAppDispatch } from '../../app/hooks';
 
 import sharedStyled from '../../shared-styled/SharedStyled';
 const { DarkerDMSectionStyled } = sharedStyled;
@@ -15,8 +16,8 @@ const HoverStyle = styled.div`
 `;
 
 export function Categories() {
-  const [activeCat, setActiveCat] = useState({ text: '', id: 0 });
-  const { categories, current } = useCategory();
+  const dispatch = useAppDispatch();
+  const { categories, current, AChangeCategory } = useCategory();
 
   const {
     food: { fetchMeals },
@@ -32,11 +33,11 @@ export function Categories() {
                 key={`category-${idx}`}
                 className="card mr-2 ml-2 category-card"
                 onClick={() => {
-                  setActiveCat({ text: cat.text, id: cat.id });
+                  dispatch(AChangeCategory({ text: cat.text, id: cat.id }));
                   fetchMeals(cat.text);
                 }}
                 style={{
-                  opacity: activeCat.text !== cat.text ? '.4' : 1,
+                  opacity: current.text !== cat.text ? '.4' : 1,
                   marginBottom: '2em',
                   flex: 1,
                   maxWidth: '145px',

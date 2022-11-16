@@ -4,7 +4,7 @@ import { getMealCategoriesAsync } from '../../api/mealCategories';
 import { getMealByCategoryAsync, iCategoryMealList } from '../../api/mealsByCategory';
 import { getMealRecipeAsync, iMealRecipeState } from '../../api/mealRecipe';
 
-import { iMealCategoriesList } from '../interfaces/index.js';
+import { iMealCategoriesList, CurrentCategory } from '../interfaces/index.js';
 
 const reducers = {
   darkMode: (state: iGeneralState) => {
@@ -13,7 +13,7 @@ const reducers = {
   changeRecipeTab: (state: iGeneralState) => {
     state.recipe.tabView = state.recipe.tabView === 0 ? 1 : 0;
   },
-  changeCurrentCategory: (state: iGeneralState, action: PayloadAction<any>) => {
+  changeCurrentCategory: (state: iGeneralState, action: PayloadAction<CurrentCategory>) => {
     const { payload } = action;
     state.userFoodCategories.current = payload;
   },

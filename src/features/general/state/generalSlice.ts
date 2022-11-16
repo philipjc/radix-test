@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { initialState } from './default-state';
+import { initialState } from './generalStateModel';
 import generalReducers from './reducers';
 
 export const generalSlice = createSlice({

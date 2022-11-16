@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
-export function MainHeroCopy() {
+export function MainHeroCopy(): ReactElement {
   return (
     <div
       className="is-flex is-flex-direction-column is-align-items-flex-start p-2 mt-4 ml-5"

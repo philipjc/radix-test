@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 
@@ -7,7 +7,7 @@ const copy = {
   lead: 'Do you have any bookmarked?',
 };
 
-export function BookmarkCard() {
+export function BookmarkCard(): ReactElement {
   return (
     <div className="column is-4 pt-0 pr-2 ml-1 pb-0">
       <div className="card ml-auto is-flex" style={{ maxWidth: '312px' }}>

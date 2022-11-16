@@ -6,7 +6,7 @@ interface iGeneralStateFetching {
   status: 'idle' | 'loading' | 'failed';
 }
 
-interface CurrentCategory {
+export interface CurrentCategory {
   text: string;
   id: number;
   icon: IconDefinition;

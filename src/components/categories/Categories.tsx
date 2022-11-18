@@ -23,14 +23,13 @@ const HoverStyle = styled.div`
 `;
 
 const CategoryAnimation: any = styled(DarkerDMSectionStyled)`
-  display: flex;
   position: fixed;
   top: 0;
   z-index: 1;
   padding-right: 0;
   background-color: transparent;
 
-  animation-duration: 1.4s;
+  animation-duration: 1.6s;
   animation-name: fadeInOpacity;
   animation-iteration-count: 1;
   animation-direction: alternate;
@@ -77,7 +76,7 @@ export function Categories() {
               <HoverStyle
                 key={`category-${idx}`}
                 className="card mr-2 ml-2 category-card"
-                onClick={() => {
+                onClick={e => {
                   dispatch(AChangeCategory(category));
                   fetchMeals(text);
                 }}

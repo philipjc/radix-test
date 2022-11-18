@@ -7,6 +7,7 @@ import {
   faEgg,
   faFish,
   faHourglass,
+  faIceCream,
   faLeaf,
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -19,6 +20,7 @@ export const CATEGORIES_AVAILABLE = [
   { text: 'Chicken', id: 6, icon: faDrumstickBite },
   { text: 'Pork', id: 7, icon: faBacon },
   { text: 'Beef', id: 8, icon: faCow },
+  { text: 'Dessert', id: 9, icon: faIceCream },
 ];
 
 export const initialState: iGeneralState = {

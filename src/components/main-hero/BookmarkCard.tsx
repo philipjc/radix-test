@@ -9,8 +9,8 @@ const copy = {
 
 export function BookmarkCard(): ReactElement {
   return (
-    <div className="column is-4 pt-0 pr-2 ml-1 pb-0">
-      <div className="card ml-auto is-flex" style={{ maxWidth: '312px' }}>
+    <div className="column is-5 pt-0 pr-2 pb-0">
+      <div className="card ml-auto is-flex" style={{ maxWidth: '468px' }}>
         <div className="card-content">
           <div className="media">
             <div className="media-left">

@@ -1,4 +1,5 @@
 import { iGeneralState } from './interfaces/index.js';
+
 import {
   faBacon,
   faCarrot,
@@ -9,9 +10,15 @@ import {
   faHourglass,
   faIceCream,
   faLeaf,
+  IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 
-export const CATEGORIES_AVAILABLE = [
+export interface iCategoryModel {
+  text: string;
+  id: number;
+  icon: IconDefinition;
+}
+export const CATEGORIES_AVAILABLE: Array<iCategoryModel> = [
   { text: 'Breakfast', id: 1, icon: faEgg },
   { text: 'Starter', id: 2, icon: faHourglass },
   { text: 'Vegetarian', id: 3, icon: faCarrot },

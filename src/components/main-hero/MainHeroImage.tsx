@@ -5,7 +5,8 @@ import { useAppDispatch } from '../../app/hooks';
 import { updateHeroSection } from '../../features/page-observer/pageObserverSlice';
 import foodPic from '../../assets/images/hero-food-chop.jpg';
 
-const heroPic = foodPic || 'https://baconmockup.com/620/200';
+const heroPic =
+  foodPic || 'https://res.cloudinary.com/philipjc/image/upload/v1668810168/hero-food-chop.jpg';
 
 export function MainHeroImage(): ReactElement {
   const dispatch = useAppDispatch();

@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 
@@ -7,6 +8,10 @@ const copy = {
   lead: 'Do you have any bookmarked?',
 };
 
+const StyledIcon = styled(FontAwesomeIcon)`
+  opacity: 0.3;
+`;
+
 export function BookmarkCard(): ReactElement {
   return (
     <div className="column is-5 pt-0 pr-2 pb-0">
@@ -14,7 +19,7 @@ export function BookmarkCard(): ReactElement {
         <div className="card-content">
           <div className="media">
             <div className="media-left">
-              <FontAwesomeIcon icon={faBookmark} style={{ fontSize: '2em' }} />
+              <StyledIcon icon={faBookmark} style={{ fontSize: '2em' }} />
             </div>
           </div>
 

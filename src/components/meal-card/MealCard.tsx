@@ -14,8 +14,8 @@ export function MealCard({ meal }: any) {
   return (
     <DMDivStyled
       onClick={() => navigate(RECIPE_URL)}
-      className="card mr-2 ml-2"
-      style={{ maxWidth: 250, marginBottom: 80, cursor: 'pointer' }}
+      className="card mr-2 ml-2 mb-6"
+      style={{ maxWidth: 250, cursor: 'pointer' }}
     >
       <div className="card-image pb-0">
         <figure className="image is-4by3">

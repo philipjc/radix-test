@@ -13,6 +13,8 @@ export const generalSlice = createSlice({
   extraReducers: builder => generalReducers.extraAsync(builder),
 });
 
+export default generalSlice.reducer;
+
 // ==== THUNK REF =====
 // ====================
 // We can also write thunks by hand, which may contain both sync and async logic.
@@ -25,5 +27,3 @@ export const generalSlice = createSlice({
 //       dispatch(incrementByAmount(amount));
 //     }
 //   };
-
-export default generalSlice.reducer;

@@ -25,9 +25,11 @@ export default function MealShimmer() {
   return (
     <div className="column is-10 ml-auto mr-auto pb-0">
       <div className="is-flex is-justify-content-space-between is-flex-wrap-wrap">
-        {[1, 2, 3, 4, 5, 6, 7, 8].map((n: number, id: number) => {
-          return <ShimmerCard key={`${n}-${id}`} />;
-        })}
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map(
+          (n: number, id: number) => {
+            return <ShimmerCard key={`${n}-${id}`} />;
+          }
+        )}
       </div>
     </div>
   );

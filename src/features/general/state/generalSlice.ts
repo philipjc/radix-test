@@ -6,9 +6,7 @@ export const generalSlice = createSlice({
   name: 'general',
   initialState,
 
-  reducers: {
-    ...generalReducers.reducers,
-  },
+  reducers: generalReducers.reducers,
 
   extraReducers: builder => generalReducers.extraAsync(builder),
 });

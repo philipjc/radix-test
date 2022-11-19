@@ -5,6 +5,8 @@ import { bookmarkingReducers } from './reducers';
 export const bookmarkingSlice = createSlice({
   name: 'bookmarking',
   initialState: initialBMState,
-  reducers: {},
+  reducers: bookmarkingReducers.reducers,
   extraReducers: builder => bookmarkingReducers.extraAsync(builder),
 });
+
+export default bookmarkingSlice.reducer;

@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { BookmarkCard } from './BookmarkCard';
+import { BookmarkCard } from '../../features/bookmarking/components/Bookmarking/BookmarkCard';
 import { InView } from 'react-intersection-observer';
 import { useAppDispatch } from '../../app/hooks';
 import { MainHeroImage } from './MainHeroImage';

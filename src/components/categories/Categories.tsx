@@ -4,7 +4,6 @@ import { useAppSelector } from '../../app/hooks';
 import { useCategory } from '../../features/general/hooks/useCategory';
 import { selectHeroObserver } from '../../features/page-observer/accessors';
 import CategoryCard from './CategoryCard';
-
 import sharedStyled from '../../shared-styled/SharedStyled';
 const { DarkerDMSectionStyled } = sharedStyled;
 
@@ -49,9 +48,7 @@ export function Categories(): ReactElement {
       <div className={containerClasses}>
         <div className={inView ? 'is-flex is-flex-wrap-wrap is-justify-content-space-evenly' : ''}>
           {categories.map((category: any, idx: number) => {
-            return (
-              <CategoryCard key={`${category.title}-item-${idx}`} category={category} id={idx} />
-            );
+            return <CategoryCard key={idx} category={category} id={idx} />;
           })}
         </div>
       </div>

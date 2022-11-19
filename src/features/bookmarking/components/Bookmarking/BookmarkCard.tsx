@@ -1,12 +1,8 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import useBookmarking from '../../hooks/useBookmarking';
 import { faBookmark, faBell } from '@fortawesome/free-solid-svg-icons';
-
-const useBookmarking = () => {
-  return { hasLikedRecipes: true, bookmarks: [] };
-};
+import useBookmarking from '../../hooks/useBookmarking';
 
 const copy = {
   header: 'My Meals',

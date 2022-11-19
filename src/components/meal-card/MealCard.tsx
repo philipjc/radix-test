@@ -15,7 +15,7 @@ export function MealCard(meal: iMeal) {
   const { idMeal, strMeal } = meal;
   const RECIPE_URL = `/recipe/${idMeal}`;
 
-  const { AddLiked } = bookmarking;
+  const { AddLiked, bookmarks } = bookmarking;
 
   return (
     <DMDivStyled
@@ -40,7 +40,12 @@ export function MealCard(meal: iMeal) {
               e.stopPropagation();
               return AddLiked({ id: meal.idMeal, meal: meal });
             }}
-            style={{ fontSize: '1.2em', padding: 0, margin: 0, opacity: 0.5 }}
+            style={{
+              fontSize: '1.2em',
+              padding: 0,
+              margin: 0,
+              opacity: 0.5,
+            }}
           />
         </div>
 

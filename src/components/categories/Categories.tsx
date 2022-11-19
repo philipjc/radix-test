@@ -48,7 +48,7 @@ export function Categories(): ReactElement {
       <div className={containerClasses}>
         <div className={inView ? 'is-flex is-flex-wrap-wrap is-justify-content-space-evenly' : ''}>
           {categories.map((category: any, idx: number) => {
-            return <CategoryCard category={category} id={idx} />;
+            return <CategoryCard key={idx} category={category} id={idx} />;
           })}
         </div>
       </div>

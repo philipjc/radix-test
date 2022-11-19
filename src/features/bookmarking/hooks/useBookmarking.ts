@@ -13,7 +13,7 @@ interface iUseBookmarking {
 const useBookmarking = (): iUseBookmarking => {
   const dispatch = useAppDispatch();
   const hasLikes = useAppSelector(selectHasLikedRecipes);
-  const likedRecipes = useAppSelector(selectAddLikedRecipes);
+  const likedMeals = useAppSelector(selectAddLikedRecipes);
   const { addLikedRecipe } = bookmarkingActions;
 
   function addLike(l: iLikedMeal) {
@@ -22,7 +22,7 @@ const useBookmarking = (): iUseBookmarking => {
 
   return {
     hasLikedRecipes: hasLikes,
-    bookmarks: likedRecipes,
+    bookmarks: likedMeals,
     AddLiked: addLike,
   };
 };

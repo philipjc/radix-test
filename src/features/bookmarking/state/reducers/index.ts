@@ -9,6 +9,7 @@ const regularReducers = {
   addLikedRecipe: (state: iBookmarkingModel, action: PayloadAction<iLikedMeal>) => {
     const { payload } = action;
     state.likedMeals = [...state.likedMeals, payload];
+    state.hasLikes = state.likedMeals.length > 0;
   },
 };
 

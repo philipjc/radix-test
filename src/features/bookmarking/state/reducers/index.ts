@@ -1,14 +1,14 @@
 import { ActionReducerMapBuilder, PayloadAction } from '@reduxjs/toolkit';
-import { iMeal } from '../../../general/api/mealsByCategory';
+import { iBookmarkingModel, iLikedMeal } from '../bookmarkingSliceModel';
 
 const someAsync = (builder: ActionReducerMapBuilder<any>) => {
   return builder;
 };
 
 const regularReducers = {
-  addLikedRecipe: (state: any, action: PayloadAction<iMeal>) => {
+  addLikedRecipe: (state: iBookmarkingModel, action: PayloadAction<iLikedMeal>) => {
     const { payload } = action;
-    return state;
+    state.likedMeals = [...state.likedMeals, payload];
   },
 };
 

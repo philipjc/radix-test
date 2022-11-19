@@ -1,15 +1,21 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import sharedStyled from '../../shared-styled/SharedStyled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { iMeal } from '../../features/general/api/mealsByCategory';
+import useBookmarking from '../../features/bookmarking/hooks/useBookmarking';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
+import sharedStyled from '../../shared-styled/SharedStyled';
 
 const { DMDivStyled } = sharedStyled;
 
-export function MealCard({ meal }: any) {
+export function MealCard(meal: iMeal) {
   const navigate = useNavigate();
+  const bookmarking = useBookmarking();
+
   const { idMeal, strMeal } = meal;
   const RECIPE_URL = `/recipe/${idMeal}`;
+
+  const { AddLiked } = bookmarking;
 
   return (
     <DMDivStyled
@@ -30,6 +36,10 @@ export function MealCard({ meal }: any) {
           <p className="title is-5 has-text-left">{strMeal}</p>
           <FontAwesomeIcon
             icon={faBookmark}
+            onClick={e => {
+              e.stopPropagation();
+              return AddLiked({ id: meal.idMeal, meal: meal });
+            }}
             style={{ fontSize: '1.2em', padding: 0, margin: 0, opacity: 0.5 }}
           />
         </div>

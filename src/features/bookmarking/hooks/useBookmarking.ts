@@ -2,12 +2,12 @@ import { useAppSelector } from '../../../app/hooks';
 import { useAppDispatch } from '../../../app/hooks';
 import { selectAddLikedRecipes, selectHasLikedRecipes } from '../state/accessors';
 import bookmarkingActions from '../state/actions';
-import { iMeal } from '../../general/api/mealsByCategory';
+import { iLikedMeal } from '../state/bookmarkingSliceModel';
 
 interface iUseBookmarking {
   hasLikedRecipes: boolean;
-  bookmarks: Array<iMeal>;
-  AddLiked: (_meal: iMeal) => {};
+  bookmarks: Array<iLikedMeal>;
+  AddLiked: (_meal: iLikedMeal) => {};
 }
 
 const useBookmarking = (): iUseBookmarking => {
@@ -16,7 +16,7 @@ const useBookmarking = (): iUseBookmarking => {
   const likedRecipes = useAppSelector(selectAddLikedRecipes);
   const { addLikedRecipe } = bookmarkingActions;
 
-  function addLike(l: iMeal) {
+  function addLike(l: iLikedMeal) {
     return dispatch(addLikedRecipe(l));
   }
 

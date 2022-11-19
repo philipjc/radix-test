@@ -43,7 +43,7 @@ export function Categories(): ReactElement {
   return (
     <BlockStyles
       inView={inView}
-      className={inView ? `section is-10 pt-4 pb-5` : `section is-10 pt-0 pb-2 pl-0`}
+      className={inView ? `section is-10 pt-3 pb-6` : `section is-10 pt-0 pb-2 pl-0`}
     >
       <div className={containerClasses}>
         <div className={inView ? 'is-flex is-flex-wrap-wrap is-justify-content-space-evenly' : ''}>

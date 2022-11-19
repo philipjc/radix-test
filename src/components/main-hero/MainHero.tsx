@@ -12,9 +12,8 @@ export function MainHero(): ReactElement {
   const dispatch = useAppDispatch();
 
   return (
-    <DarkerDMSectionStyled className="section column is-10 is-flex m-auto pt-2 pb-3">
+    <DarkerDMSectionStyled className="section column is-10 is-flex m-auto" style={{ height: 300 }}>
       <InView onChange={(inView: boolean, entry: any) => dispatch(updateHeroSection(inView))} />
-
       <MainHeroImage />
       <BookmarkCard />
     </DarkerDMSectionStyled>

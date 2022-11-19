@@ -48,8 +48,12 @@ export function BookmarkCard(): ReactElement {
   const { hasLikedRecipes, bookmarks } = bookmarking;
 
   return (
-    <div className="column card-content">
-      <div className="media is-justify-content-space-between">
+    <div
+      className="column is-flex is-flex-direction-column is-justify-content-space-between
+       card-content ml-4 p-4"
+      style={{ backgroundColor: '#fff' }}
+    >
+      <div className="media is-flex is-justify-content-space-between">
         <div className="media-left">
           {hasLikedRecipes ? (
             <FullColourIcon icon={faBookmark} style={{ fontSize: '2em' }} />
@@ -58,7 +62,7 @@ export function BookmarkCard(): ReactElement {
           )}
         </div>
         <div className="media-right">
-          <BellAnimation icon={faBell} style={{ fontSize: '1.5em' }} />
+          <BellAnimation icon={faBell} style={{ fontSize: '1.6em' }} />
         </div>
       </div>
 

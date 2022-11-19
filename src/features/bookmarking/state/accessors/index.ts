@@ -1,3 +1,4 @@
-const bookmarkingActions = {};
+import { RootState } from '../../../../app/store';
 
-export default bookmarkingActions;
+export const selectAddLikedRecipes = (state: RootState) => state.bookmarking.likedMeals;
+export const selectHasLikedRecipes = (state: RootState) => state.bookmarking.hasLikes;

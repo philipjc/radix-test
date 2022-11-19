@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { BookmarkCard } from './BookmarkCard';
+import { BookmarkCard } from '../../features/bookmarking/components/Bookmarking/BookmarkCard';
 import { MainHeroCopy } from './MainHeroCopy';
 import { MainHeroImage } from './MainHeroImage';
 import SharedStyled from '../../shared-styled/SharedStyled';

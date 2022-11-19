@@ -6,15 +6,15 @@ interface iGeneralStateFetching {
   status: 'idle' | 'loading' | 'failed';
 }
 
-export interface CurrentCategory {
+export interface iCurrentCategory {
   text: string;
   id: number;
   icon: IconDefinition;
 }
 
-interface UserFoodCategories {
+interface iUserFoodCategories {
   categories: Array<object>;
-  current: CurrentCategory;
+  current: iCurrentCategory;
 }
 
 export interface iCategory {
@@ -44,7 +44,7 @@ export interface iGeneralState {
   value: number;
   fetching: iGeneralStateFetching;
   foodCategories: iMealCategoriesList;
-  userFoodCategories: UserFoodCategories;
+  userFoodCategories: iUserFoodCategories;
   food: iCategoryMealList;
   recipe: iMealRecipeState;
 }

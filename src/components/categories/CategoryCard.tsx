@@ -42,6 +42,7 @@ const CategoryCard = ({ category, id }: iCategoryCard): ReactElement => {
       key={`category-${id}`}
       className="card mr-1 ml-1 category-card"
       onClick={e => {
+        e.preventDefault();
         dispatch(AChangeCategory(category));
         fetchMeals(text);
       }}

@@ -37,6 +37,7 @@ interface FoodState {
 export interface iUseMeals {
   categories: iMealCategoriesList | any;
   food: FoodState;
+  meals: any;
 }
 
 export interface iGeneralState {

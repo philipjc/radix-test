@@ -17,6 +17,9 @@ export function MealCard(meal: iMeal) {
 
   const { AddLiked, bookmarks } = bookmarking;
 
+  const mealFromMealList = bookmarks.filter(mark => mark.id === idMeal);
+  const isLiked = mealFromMealList[0] ? mealFromMealList[0].id === idMeal : false;
+
   return (
     <DMDivStyled
       onClick={() => navigate(RECIPE_URL)}
@@ -44,7 +47,7 @@ export function MealCard(meal: iMeal) {
               fontSize: '1.2em',
               padding: 0,
               margin: 0,
-              opacity: 0.5,
+              opacity: isLiked ? 1 : 0.5,
             }}
           />
         </div>

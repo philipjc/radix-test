@@ -22,9 +22,9 @@ export function MealsList(): ReactElement {
       ) : (
         <div className="column is-10 ml-auto mr-auto pb-0">
           <div className="is-flex is-justify-content-space-between is-flex-wrap-wrap">
-            {meals.map((meal: iMeal, idx: string) => (
-              <MealCard key={`${meal.strMeal}-${idx}`} {...meal} />
-            ))}
+            {meals.map((meal: iMeal, idx: string) => {
+              return <MealCard key={`${meal.strMeal}-${idx}`} {...meal} />;
+            })}
           </div>
         </div>
       )}

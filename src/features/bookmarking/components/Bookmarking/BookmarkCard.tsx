@@ -62,7 +62,11 @@ export function BookmarkCard(): ReactElement {
           )}
         </div>
         <div className="media-right">
-          <BellAnimation icon={faBell} style={{ fontSize: '1.6em' }} />
+          {hasLikedRecipes ? (
+            <BellAnimation icon={faBell} style={{ fontSize: '1.6em' }} />
+          ) : (
+            <FontAwesomeIcon icon={faBell} style={{ fontSize: '1.6em' }} />
+          )}
         </div>
       </div>
 

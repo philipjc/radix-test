@@ -14,7 +14,12 @@ export function useMeals(): iUseMeals {
   const categoriesState = useAppSelector(selectFoodCategoriesState);
   const foodState = useAppSelector(selectFoodState);
 
+  const { meals } = foodState;
+
   return {
+    get meals() {
+      return meals;
+    },
     categories: {
       ...categoriesState,
     },

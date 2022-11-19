@@ -1,5 +1,6 @@
 import { ActionReducerMapBuilder, PayloadAction } from '@reduxjs/toolkit';
 import { iBookmarkingModel, iLikedMeal } from '../bookmarkingSliceModel';
+import produce from 'immer';
 
 const someAsync = (builder: ActionReducerMapBuilder<any>) => {
   return builder;
@@ -8,7 +9,11 @@ const someAsync = (builder: ActionReducerMapBuilder<any>) => {
 const regularReducers = {
   addLikedRecipe: (state: iBookmarkingModel, action: PayloadAction<iLikedMeal>) => {
     const { payload } = action;
-    state.likedMeals = [...state.likedMeals, payload];
+    const updatedLikedMeals = produce(state.likedMeals, draft => {
+      const index = draft.findIndex(meal => meal.id === payload.id);
+      if (index !== -1) draft.splice(index, 1);
+    });
+    state.likedMeals = [...updatedLikedMeals, payload];
     state.hasLikes = state.likedMeals.length > 0;
   },
 };

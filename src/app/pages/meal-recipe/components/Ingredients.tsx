@@ -8,19 +8,30 @@ export function Ingredients(): ReactElement {
   const recipeKeys = Object.keys(meals[0] || {});
   const ingredientProperty = 'strIngredient';
 
-  const ingredientsKeysArray: Array<string> = recipeKeys
+  const ingredients: Array<string> = recipeKeys
     .filter((key: string) => key.includes(ingredientProperty))
+    // @ts-ignore
+    .map((ingredientName: string) => meals[0][ingredientName]);
+
+  const measureProperty = 'strMeasure';
+
+  const measures: Array<string> = recipeKeys
+    .filter((key: string) => key.includes(measureProperty))
     // @ts-ignore
     .map((ingredientName: string) => meals[0][ingredientName]);
 
   return (
     <div className="column">
+      <h2>Ingredients</h2>
       <ul className="ml-0 pl-4">
-        {ingredientsKeysArray.map((ingredient: string, idx: number) => {
+        {ingredients.map((ingredient: string, idx: number) => {
           return (
             ingredient && (
-              <li className="ml-0 pl-0 is-size-5" key={`ingredient-${idx}`}>
-                {ingredient}
+              <li className="is-size-6 mb-3" key={`ingredient-${idx}`}>
+                <div className="is-flex is-justify-content-space-between">
+                  <span className="is-flex-grow-1"> {ingredient}</span>
+                  <span className="has-text-right">{measures[idx]}</span>
+                </div>
               </li>
             )
           );

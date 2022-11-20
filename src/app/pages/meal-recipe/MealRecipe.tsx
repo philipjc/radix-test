@@ -13,10 +13,10 @@ const { DarkerDMSectionStyled, DMDivStyled } = SharedStyled;
 export function MealRecipe(): ReactElement {
   const { recipeState } = useMealRecipe();
   const { isRecipeLiked } = useBookmarking();
-  const { meals, tabView } = recipeState;
+  const { meals } = recipeState;
 
   const meal = meals[0] || {};
-  const { strMealThumb, strMeal, idMeal } = meal;
+  const { strMealThumb, strMeal, idMeal, strTags, strArea, strCategory } = meal;
 
   const isLiked = isRecipeLiked(String(idMeal));
 
@@ -34,7 +34,7 @@ export function MealRecipe(): ReactElement {
             </div>
             <div className="column is-8 content has-text-left">
               <header className="is-flex is-justify-content-space-between is-align-items-center is-relative">
-                <h1 className="title is-2 mb-2">{strMeal}</h1>
+                <h1 className="title is-1 mb-2">{strMeal}</h1>
                 {isLiked && (
                   <FontAwesomeIcon
                     icon={faBookmark}
@@ -49,7 +49,13 @@ export function MealRecipe(): ReactElement {
                 )}
               </header>
 
-              {tabView ? <Instructions /> : <Ingredients />}
+              <div className="container">
+                <span className="tag mr-4">{strArea}</span>
+                <span className="tag mr-4">{strCategory}</span>
+                {strTags && strTags.split(',').map(tag => <span className="tag mr-4">{tag}</span>)}
+              </div>
+
+              <Instructions />
             </div>
           </DMDivStyled>
         </div>

@@ -15,10 +15,9 @@ export function MealCard(meal: iMeal) {
   const { idMeal, strMeal } = meal;
   const RECIPE_URL = `/recipe/${idMeal}`;
 
-  const { AAddLiked, ARemoveLike, bookmarks } = bookmarking;
+  const { AAddLiked, ARemoveLike, isRecipeLiked } = bookmarking;
 
-  const mealFromMealList = bookmarks.filter(mark => mark.id === idMeal);
-  const isLiked = mealFromMealList[0] ? mealFromMealList[0].id === idMeal : false;
+  const isLiked = isRecipeLiked(idMeal);
 
   return (
     <DMDivStyled

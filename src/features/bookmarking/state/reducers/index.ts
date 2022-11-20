@@ -1,6 +1,6 @@
 import { ActionReducerMapBuilder, PayloadAction } from '@reduxjs/toolkit';
 import { iBookmarkingModel, iLikedMeal } from '../bookmarkingSliceModel';
-import { addItemToArray, removeItemById } from './r-helpers';
+import { addItemToArray, removeItemById, isRecipeBookmarked } from './r-helpers';
 
 const someAsync = (builder: ActionReducerMapBuilder<any>) => {
   return builder;
@@ -11,7 +11,7 @@ const regularReducers = {
     const { payload } = action;
     const { likedMeals } = state;
 
-    const recipeAlreadyAdded = likedMeals.findIndex(item => item.id === payload.id);
+    const recipeAlreadyAdded = isRecipeBookmarked(likedMeals, payload);
     if (recipeAlreadyAdded !== -1) return;
 
     const updatedLikedMeals = addItemToArray(likedMeals, payload);
@@ -23,7 +23,7 @@ const regularReducers = {
     const { payload } = action;
     const { likedMeals } = state;
 
-    const recipeAlreadyAdded = likedMeals.findIndex(item => item.id === payload.id);
+    const recipeAlreadyAdded = isRecipeBookmarked(likedMeals, payload);
     if (recipeAlreadyAdded === -1) return;
 
     const updatedLikedMeals = removeItemById(likedMeals, payload);

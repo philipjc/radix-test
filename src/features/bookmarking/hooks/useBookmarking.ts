@@ -3,10 +3,12 @@ import { useAppDispatch } from '../../../app/hooks';
 import { selectAddLikedRecipes, selectHasLikedRecipes } from '../state/accessors';
 import bookmarkingActions from '../state/actions';
 import { iLikedMeal } from '../state/bookmarkingSliceModel';
+import { iMeal } from '../../general/api/mealsByCategory';
 
 interface iUseBookmarking {
   hasLikedRecipes: boolean;
   bookmarks: Array<iLikedMeal>;
+  isRecipeLiked: (mealId: string) => {};
   AAddLiked: (_meal: iLikedMeal) => {};
   ARemoveLike: (_meal: iLikedMeal) => {};
 }
@@ -25,9 +27,15 @@ const useBookmarking = (): iUseBookmarking => {
     return dispatch(removeLikedRecipe(l));
   }
 
+  function isRecipeInLikeList(mealId: string) {
+    const mealFromMealList = likedMeals.filter(meal => meal.id === mealId);
+    return mealFromMealList[0] ? mealFromMealList[0].id === mealId : false;
+  }
+
   return {
     hasLikedRecipes: hasLikes,
     bookmarks: likedMeals,
+    isRecipeLiked: isRecipeInLikeList,
     AAddLiked: addLike,
     ARemoveLike: removeLike,
   };

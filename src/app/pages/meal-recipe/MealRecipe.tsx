@@ -1,9 +1,11 @@
 import React, { ReactElement } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { useMealRecipe } from '../../../features/general/hooks/useMealRecipe';
 import { useAppDispatch } from '../../hooks';
-import { Ingredients } from './componentes/Ingredients';
-import { Instructions } from './componentes/Instructions';
-
+import { Ingredients } from './components/Ingredients';
+import { Instructions } from './components/Instructions';
+import useBookmarking from '../../../features/bookmarking/hooks/useBookmarking';
 import SharedStyled from '../../../shared-styled/SharedStyled';
 
 const { DarkerDMSectionStyled, DMDivStyled } = SharedStyled;
@@ -11,9 +13,13 @@ const { DarkerDMSectionStyled, DMDivStyled } = SharedStyled;
 export function MealRecipe(): ReactElement {
   const dispatch = useAppDispatch();
   const { recipeState, changeRecipeTab } = useMealRecipe();
+  const { isRecipeLiked } = useBookmarking();
   const { meals, tabView } = recipeState;
 
-  const { strMealThumb, strMeal } = meals[0] || {};
+  const meal = meals[0] || {};
+  const { strMealThumb, strMeal, idMeal } = meal;
+
+  const isLiked = isRecipeLiked(String(idMeal));
 
   return (
     <DarkerDMSectionStyled className="section">
@@ -26,7 +32,10 @@ export function MealRecipe(): ReactElement {
               </figure>
             </div>
             <div className="column content has-text-left">
-              <h1 className="title is-2 mb-2">{strMeal}</h1>
+              <h1 className="title is-2 mb-2">
+                {strMeal}
+                {isLiked && <FontAwesomeIcon icon={faBookmark} />}
+              </h1>
               <nav className="tabs is-large m-0 p-0">
                 <ul className="m-0 p-0 is-flex">
                   <li

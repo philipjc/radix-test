@@ -10,9 +10,6 @@ const reducers = {
   darkMode: (state: iGeneralState) => {
     state.darkMode = !state.darkMode;
   },
-  changeRecipeTab: (state: iGeneralState) => {
-    state.recipe.tabView = state.recipe.tabView === 0 ? 1 : 0;
-  },
   changeCurrentCategory: (state: iGeneralState, action: PayloadAction<iCurrentCategory>) => {
     const { payload } = action;
     state.userFoodCategories.current = payload;

@@ -7,23 +7,29 @@ import { iLikedMeal } from '../state/bookmarkingSliceModel';
 interface iUseBookmarking {
   hasLikedRecipes: boolean;
   bookmarks: Array<iLikedMeal>;
-  AddLiked: (_meal: iLikedMeal) => {};
+  AAddLiked: (_meal: iLikedMeal) => {};
+  ARemoveLike: (_meal: iLikedMeal) => {};
 }
 
 const useBookmarking = (): iUseBookmarking => {
   const dispatch = useAppDispatch();
   const hasLikes = useAppSelector(selectHasLikedRecipes);
   const likedMeals = useAppSelector(selectAddLikedRecipes);
-  const { addLikedRecipe } = bookmarkingActions;
+  const { addLikedRecipe, removeLikedRecipe } = bookmarkingActions;
 
   function addLike(l: iLikedMeal) {
     return dispatch(addLikedRecipe(l));
   }
 
+  function removeLike(l: iLikedMeal) {
+    return dispatch(removeLikedRecipe(l));
+  }
+
   return {
     hasLikedRecipes: hasLikes,
     bookmarks: likedMeals,
-    AddLiked: addLike,
+    AAddLiked: addLike,
+    ARemoveLike: removeLike,
   };
 };
 

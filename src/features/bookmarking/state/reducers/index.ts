@@ -1,6 +1,6 @@
 import { ActionReducerMapBuilder, PayloadAction } from '@reduxjs/toolkit';
 import { iBookmarkingModel, iLikedMeal } from '../bookmarkingSliceModel';
-import produce from 'immer';
+import { addItemToArray, removeItemById } from './r-helpers';
 
 const someAsync = (builder: ActionReducerMapBuilder<any>) => {
   return builder;
@@ -9,11 +9,26 @@ const someAsync = (builder: ActionReducerMapBuilder<any>) => {
 const regularReducers = {
   addLikedRecipe: (state: iBookmarkingModel, action: PayloadAction<iLikedMeal>) => {
     const { payload } = action;
-    const updatedLikedMeals = produce(state.likedMeals, draft => {
-      const index = draft.findIndex(meal => meal.id === payload.id);
-      if (index !== -1) draft.splice(index, 1);
-    });
-    state.likedMeals = [...updatedLikedMeals, payload];
+    const { likedMeals } = state;
+
+    const recipeAlreadyAdded = likedMeals.findIndex(item => item.id === payload.id);
+    if (recipeAlreadyAdded !== -1) return;
+
+    const updatedLikedMeals = addItemToArray(likedMeals, payload);
+
+    state.likedMeals = [...updatedLikedMeals];
+    state.hasLikes = state.likedMeals.length > 0;
+  },
+  removeLikedRecipe: (state: iBookmarkingModel, action: PayloadAction<iLikedMeal>) => {
+    const { payload } = action;
+    const { likedMeals } = state;
+
+    const recipeAlreadyAdded = likedMeals.findIndex(item => item.id === payload.id);
+    if (recipeAlreadyAdded === -1) return;
+
+    const updatedLikedMeals = removeItemById(likedMeals, payload);
+
+    state.likedMeals = [...updatedLikedMeals];
     state.hasLikes = state.likedMeals.length > 0;
   },
 };

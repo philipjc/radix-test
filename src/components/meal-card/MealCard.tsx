@@ -15,7 +15,7 @@ export function MealCard(meal: iMeal) {
   const { idMeal, strMeal } = meal;
   const RECIPE_URL = `/recipe/${idMeal}`;
 
-  const { AddLiked, bookmarks } = bookmarking;
+  const { AAddLiked, ARemoveLike, bookmarks } = bookmarking;
 
   const mealFromMealList = bookmarks.filter(mark => mark.id === idMeal);
   const isLiked = mealFromMealList[0] ? mealFromMealList[0].id === idMeal : false;
@@ -41,7 +41,10 @@ export function MealCard(meal: iMeal) {
             icon={faBookmark}
             onClick={e => {
               e.stopPropagation();
-              return AddLiked({ id: meal.idMeal, meal: meal });
+
+              return isLiked
+                ? ARemoveLike({ id: meal.idMeal, meal: meal })
+                : AAddLiked({ id: meal.idMeal, meal: meal });
             }}
             style={{
               fontSize: '1.2em',

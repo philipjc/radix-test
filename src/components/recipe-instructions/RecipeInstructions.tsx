@@ -14,7 +14,7 @@ export function RecipeInstructions(): ReactElement {
             return Number(line)
               ? null
               : line && (
-                  <li className="ml-0 mb-2 pl-0 is-size-5" key={`Instruction-line-${idx}`}>
+                  <li className="ml-0 mb-3 pl-0 is-size-6" key={`Instruction-line-${idx}`}>
                     {line}
                   </li>
                 );

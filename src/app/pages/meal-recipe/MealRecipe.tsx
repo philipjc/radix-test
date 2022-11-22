@@ -27,8 +27,11 @@ export function MealRecipe(): ReactElement {
             <Ingredients />
           </div>
           <div className="column is-8 content has-text-left">
-            <header className="is-flex is-justify-content-space-between is-align-items-center is-relative">
-              <h1 className="title is-1 mb-2">{strMeal}</h1>
+            <header
+              className="is-flex is-justify-content-space-between is-align-items-center is-relative mb-6"
+              style={{ borderBottom: '2px solid rgba(110,150,215, .7)' }}
+            >
+              <h1 className="title is-1">{strMeal}</h1>
               {isLiked && (
                 <FontAwesomeIcon
                   icon={faBookmark}
@@ -43,7 +46,7 @@ export function MealRecipe(): ReactElement {
               )}
             </header>
 
-            <div className="container">
+            <div className="container mb-5">
               <span className="tag mr-4">{strArea}</span>
               <span className="tag mr-4">{strCategory}</span>
               {strTags &&

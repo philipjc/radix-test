@@ -27,7 +27,7 @@ export function MealCard(meal: iMeal) {
     >
       <div className="card-image pb-0">
         <figure className="image is-4by3">
-          <img src={meal.strMealThumb} alt={strMeal} />
+          <img src={meal.strMealThumb} alt={strMeal} width="250px" height="188px" />
         </figure>
       </div>
       <div className="card-content">

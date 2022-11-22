@@ -3,7 +3,6 @@ import { useAppDispatch } from '../../../app/hooks';
 import { selectAddLikedRecipes, selectHasLikedRecipes } from '../state/accessors';
 import bookmarkingActions from '../state/actions';
 import { iLikedMeal } from '../state/bookmarkingSliceModel';
-import { iMeal } from '../../general/api/mealsByCategory';
 
 interface iUseBookmarking {
   hasLikedRecipes: boolean;

@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
-import { useMealRecipe } from '../../../../features/general/hooks/useMealRecipe';
+import { useMealRecipe } from '../../features/general/hooks/useMealRecipe';
 
-export function Instructions(): ReactElement {
+export function RecipeInstructions(): ReactElement {
   const { recipeState } = useMealRecipe();
   const { meals } = recipeState;
   const { strInstructions } = meals[0] || {};

@@ -2,11 +2,11 @@ import React, { ReactElement } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { useMealRecipe } from '../../../features/general/hooks/useMealRecipe';
-import { Ingredients } from './components/Ingredients';
-import { Instructions } from './components/Instructions';
 import useBookmarking from '../../../features/bookmarking/hooks/useBookmarking';
-import SharedStyled from '../../../shared-styled/SharedStyled';
+import { RecipeInstructions } from '../../../components/recipe-instructions/RecipeInstructions';
 import { BackButton } from '../../../components/back-button/BackButton';
+import SharedStyled from '../../../shared-styled/SharedStyled';
+import { Ingredients } from '../../../components/ingredients/Ingredients';
 
 const { DarkerDMSectionStyled, DMDivStyled } = SharedStyled;
 
@@ -16,7 +16,7 @@ export function MealRecipe(): ReactElement {
   const { meals } = recipeState;
 
   const meal = meals[0] || {};
-  const { strMealThumb, strMeal, idMeal, strTags, strArea, strCategory } = meal;
+  const { strMeal, idMeal, strTags, strArea, strCategory } = meal;
 
   const isLiked = isRecipeLiked(String(idMeal));
 
@@ -26,10 +26,7 @@ export function MealRecipe(): ReactElement {
       <DarkerDMSectionStyled className="section">
         <div className="column is-10 m-auto has-text-left">
           <DMDivStyled className="is-flex">
-            <div className="column content is-4">
-              <figure className="is-4by3">
-                <img src={strMealThumb} alt={strMeal} />
-              </figure>
+            <div className="column is-4">
               <Ingredients />
             </div>
             <div className="column is-8 content has-text-left">
@@ -40,9 +37,9 @@ export function MealRecipe(): ReactElement {
                     icon={faBookmark}
                     style={{
                       position: 'absolute',
-                      top: -20,
-                      right: 10,
-                      fontSize: '1.8em',
+                      top: -24,
+                      right: 12,
+                      fontSize: '2.8em',
                       color: 'rgba(110,150,215, .7)',
                     }}
                   />
@@ -55,7 +52,7 @@ export function MealRecipe(): ReactElement {
                 {strTags && strTags.split(',').map(tag => <span className="tag mr-4">{tag}</span>)}
               </div>
 
-              <Instructions />
+              <RecipeInstructions />
             </div>
           </DMDivStyled>
         </div>

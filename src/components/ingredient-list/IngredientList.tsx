@@ -30,9 +30,14 @@ const findMeasures = (meals: Array<iMealRecipe>, recipeKeys: Array<string>): Arr
 
 const calculateMeasures = (measures: Array<string>, quantity: number): Array<string> => {
   return measures.map((measure: string): any => {
+    if (measure === null) {
+      return null;
+    }
+
     const splitMeasureSpace = measure.split(' ');
     const splitMeasureMg = measure.split('m');
     const splitMeasureKg = measure.split('k');
+    const splitMeasureGram = measure.split('g');
 
     const splitOnSplitter =
       splitMeasureSpace.length > 1
@@ -41,14 +46,14 @@ const calculateMeasures = (measures: Array<string>, quantity: number): Array<str
         ? 'm'
         : splitMeasureKg.length > 1
         ? 'k'
-        : 'g';
+        : splitMeasureGram.length > 1
+        ? 'g'
+        : '-';
 
     const mapMeasures = () => {
       const measureSplit = measure.split(splitOnSplitter);
       return measureSplit
         .map((measureNumberString: string) => {
-          // npm: format-quantity
-
           const isQuarter = measureNumberString === String.fromCharCode(188);
           const isHalf = measureNumberString === String.fromCharCode(189);
           const isThreeQuarter = measureNumberString === String.fromCharCode(190);
@@ -86,6 +91,11 @@ const calculateMeasures = (measures: Array<string>, quantity: number): Array<str
 
           if (measureIsNumber) {
             return String(coercionNumber * quantity);
+          }
+
+          if (measureNumberString === '2-1/2') {
+            const measureValue = 2.5;
+            return formatQuantity(quantity * measureValue);
           }
 
           return measureNumberString;

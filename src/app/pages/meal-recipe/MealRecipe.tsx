@@ -4,7 +4,6 @@ import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { useMealRecipe } from '../../../features/general/hooks/useMealRecipe';
 import useBookmarking from '../../../features/bookmarking/hooks/useBookmarking';
 import { RecipeInstructions } from '../../../components/recipe-instructions/RecipeInstructions';
-import { BackButton } from '../../../components/back-button/BackButton';
 import SharedStyled from '../../../shared-styled/SharedStyled';
 import { Ingredients } from '../../../components/ingredients/Ingredients';
 

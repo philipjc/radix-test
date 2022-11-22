@@ -28,8 +28,11 @@ export function MealRecipe(): ReactElement {
           </div>
           <div className="column is-8 content has-text-left">
             <header
-              className="is-flex is-justify-content-space-between is-align-items-center is-relative mb-6"
-              style={{ borderBottom: '2px solid rgba(110,150,215, .7)' }}
+              className="is-flex is-justify-content-space-between is-align-items-center is-relative mb-6 mt-4 pt-4"
+              style={{
+                borderBottom: '2px solid rgba(110,150,215, .3)',
+                borderTop: '2px solid rgba(110,150,215, .3)',
+              }}
             >
               <h1 className="title is-1">{strMeal}</h1>
               {isLiked && (

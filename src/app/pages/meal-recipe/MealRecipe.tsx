@@ -49,7 +49,12 @@ export function MealRecipe(): ReactElement {
               <div className="container">
                 <span className="tag mr-4">{strArea}</span>
                 <span className="tag mr-4">{strCategory}</span>
-                {strTags && strTags.split(',').map(tag => <span className="tag mr-4">{tag}</span>)}
+                {strTags &&
+                  strTags.split(',').map((tag, idx) => (
+                    <span key={`${tag}-${idx}`} className="tag mr-4">
+                      {tag}
+                    </span>
+                  ))}
               </div>
 
               <RecipeInstructions />

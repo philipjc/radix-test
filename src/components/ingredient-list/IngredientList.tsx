@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import { useMealRecipe } from '../../features/general/hooks/useMealRecipe';
 import { iMealRecipe } from '../../features/general/api/mealRecipe';
+import { formatQuantity } from 'format-quantity';
 
 interface IListProps {
   quantity: number;
@@ -31,15 +32,45 @@ const calculateMeasures = (measures: Array<string>, quantity: number): Array<str
   return measures.map((measure: string): any => {
     const splitMeasureSpace = measure.split(' ');
     const splitMeasureMg = measure.split('m');
-    // const splitMeasureGram = measure.split('g');
+    const splitMeasureKg = measure.split('k');
 
     const splitOnSplitter =
-      splitMeasureSpace.length > 1 ? ' ' : splitMeasureMg.length > 1 ? 'm' : 'g';
+      splitMeasureSpace.length > 1
+        ? ' '
+        : splitMeasureMg.length > 1
+        ? 'm'
+        : splitMeasureKg.length > 1
+        ? 'k'
+        : 'g';
 
     const mapMeasures = () => {
-      const updatedMeasure = measure.split(splitOnSplitter);
-      return updatedMeasure
+      const measureSplit = measure.split(splitOnSplitter);
+      return measureSplit
         .map((measureNumberString: string) => {
+          // npm: format-quantity
+
+          const isQuarter = measureNumberString === String.fromCharCode(188);
+          const isHalf = measureNumberString === String.fromCharCode(189);
+          const isThreeQuarter = measureNumberString === String.fromCharCode(190);
+
+          if (isQuarter) {
+            const measureValue = 0.25;
+
+            return formatQuantity(quantity * measureValue);
+          }
+
+          if (isHalf) {
+            const measureValue = 0.5;
+
+            return formatQuantity(quantity * measureValue);
+          }
+
+          if (isThreeQuarter) {
+            const measureValue = 0.75;
+
+            return formatQuantity(quantity * measureValue);
+          }
+
           const coercionNumber: number = Number(measureNumberString);
 
           if (Number(measureNumberString) === 0) return measureNumberString;
@@ -49,7 +80,7 @@ const calculateMeasures = (measures: Array<string>, quantity: number): Array<str
           if (!measureIsNumber) {
             if (measureNumberString === '1/2') {
               const measureValue = 0.5;
-              return String(quantity * measureValue);
+              return formatQuantity(quantity * measureValue);
             }
           }
 

@@ -21,47 +21,44 @@ export function MealRecipe(): ReactElement {
   const isLiked = isRecipeLiked(String(idMeal));
 
   return (
-    <>
-      <BackButton />
-      <DarkerDMSectionStyled className="section">
-        <div className="column is-10 m-auto has-text-left">
-          <DMDivStyled className="is-flex">
-            <div className="column is-4">
-              <Ingredients />
-            </div>
-            <div className="column is-8 content has-text-left">
-              <header className="is-flex is-justify-content-space-between is-align-items-center is-relative">
-                <h1 className="title is-1 mb-2">{strMeal}</h1>
-                {isLiked && (
-                  <FontAwesomeIcon
-                    icon={faBookmark}
-                    style={{
-                      position: 'absolute',
-                      top: -24,
-                      right: 12,
-                      fontSize: '2.8em',
-                      color: 'rgba(110,150,215, .7)',
-                    }}
-                  />
-                )}
-              </header>
+    <DarkerDMSectionStyled className="section">
+      <div className="column is-10 m-auto has-text-left">
+        <DMDivStyled className="is-flex">
+          <div className="column is-4">
+            <Ingredients />
+          </div>
+          <div className="column is-8 content has-text-left">
+            <header className="is-flex is-justify-content-space-between is-align-items-center is-relative">
+              <h1 className="title is-1 mb-2">{strMeal}</h1>
+              {isLiked && (
+                <FontAwesomeIcon
+                  icon={faBookmark}
+                  style={{
+                    position: 'absolute',
+                    top: -24,
+                    right: 12,
+                    fontSize: '2.8em',
+                    color: 'rgba(110,150,215, .7)',
+                  }}
+                />
+              )}
+            </header>
 
-              <div className="container">
-                <span className="tag mr-4">{strArea}</span>
-                <span className="tag mr-4">{strCategory}</span>
-                {strTags &&
-                  strTags.split(',').map((tag, idx) => (
-                    <span key={`${tag}-${idx}`} className="tag mr-4">
-                      {tag}
-                    </span>
-                  ))}
-              </div>
-
-              <RecipeInstructions />
+            <div className="container">
+              <span className="tag mr-4">{strArea}</span>
+              <span className="tag mr-4">{strCategory}</span>
+              {strTags &&
+                strTags.split(',').map((tag, idx) => (
+                  <span key={`${tag}-${idx}`} className="tag mr-4">
+                    {tag}
+                  </span>
+                ))}
             </div>
-          </DMDivStyled>
-        </div>
-      </DarkerDMSectionStyled>
-    </>
+
+            <RecipeInstructions />
+          </div>
+        </DMDivStyled>
+      </div>
+    </DarkerDMSectionStyled>
   );
 }

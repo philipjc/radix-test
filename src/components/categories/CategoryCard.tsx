@@ -9,7 +9,7 @@ import { selectHeroObserver } from '../../features/page-observer/accessors';
 
 const HoverStyle = styled.div`
   &:hover {
-    opacity: 0.6 !important;
+    opacity: 0.8 !important;
     color: #444;
   }
 
@@ -47,7 +47,7 @@ const CategoryCard = ({ category, id }: iCategoryCard): ReactElement => {
         fetchMeals(text);
       }}
       style={{
-        opacity: selectedCategory.text !== text ? '.4' : 1,
+        opacity: selectedCategory && selectedCategory.text === text ? 1 : 0.4,
         ...tileWidthStyles,
         margin: '0 auto',
         marginBottom: '1em',

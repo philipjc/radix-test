@@ -14,7 +14,7 @@ export interface iCurrentCategory {
 
 interface iUserFoodCategories {
   categories: Array<object>;
-  current: iCurrentCategory;
+  current: iCurrentCategory | null;
 }
 
 export interface iCategory {

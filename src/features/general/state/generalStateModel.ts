@@ -42,7 +42,7 @@ export const initialState: iGeneralState = {
   },
   userFoodCategories: {
     categories: CATEGORIES_AVAILABLE,
-    current: { text: 'Breakfast', id: 1, icon: faEgg },
+    current: null,
   },
   food: {
     fetching: false,

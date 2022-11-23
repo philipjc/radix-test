@@ -1,6 +1,7 @@
 import { iCategoryMealList, iMeal } from '../../api/mealsByCategory';
 import { iMealRecipeState } from '../../api/mealRecipe';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { iCategoryModel } from '../generalStateModel';
 
 interface iGeneralStateFetching {
   status: 'idle' | 'loading' | 'failed';
@@ -9,7 +10,12 @@ interface iGeneralStateFetching {
 export interface iCurrentCategory {
   text: string;
   id: number;
-  icon: IconDefinition;
+  icon?: IconDefinition;
+}
+
+export interface iCategoryCard {
+  category: iCategoryModel;
+  id: number;
 }
 
 interface iUserFoodCategories {

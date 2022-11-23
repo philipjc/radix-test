@@ -74,7 +74,7 @@ export function MealsList(): ReactElement {
 
   return meals.length < 1 ? (
     <div className="column is-10 m-auto pl-6">
-      <h2 className="is-size-2 has-text-left">
+      <h2 className="is-size-3 has-text-left">
         Select a category to get started
         {fetching ? (
           <AnimateSpan>

@@ -1,6 +1,6 @@
 import { selectUserCategoriesState } from '../state/accessors';
 import { useAppSelector } from '../../../app/hooks';
-import { changeCurrentCategory } from '../state/actions';
+import { changeCurrentCategory, removeCategory } from '../state/actions';
 
 export function useCategory() {
   const { categories, current } = useAppSelector(selectUserCategoriesState);
@@ -9,5 +9,6 @@ export function useCategory() {
     categories,
     current,
     AChangeCategory: changeCurrentCategory,
+    ARemoveCategory: removeCategory,
   };
 }

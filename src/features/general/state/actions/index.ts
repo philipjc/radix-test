@@ -1,3 +1,4 @@
 import { generalSlice } from '../generalSlice';
 
-export const { darkMode, changeCurrentCategory } = generalSlice.actions;
+export const { darkMode, changeCurrentCategory, removeCategory, addCategory } =
+  generalSlice.actions;

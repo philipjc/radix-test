@@ -1,10 +1,40 @@
-import { iGeneralState } from '../interfaces/index.js';
+import { iCurrentCategory, iGeneralState, iMealCategoriesList } from '../interfaces/index.js';
+import produce from 'immer';
 import { ActionReducerMapBuilder, PayloadAction } from '@reduxjs/toolkit';
 import { getMealCategoriesAsync } from '../../api/mealCategories';
 import { getMealByCategoryAsync, iCategoryMealList } from '../../api/mealsByCategory';
 import { getMealRecipeAsync, iMealRecipeState } from '../../api/mealRecipe';
+import { iCategoryModel } from '../generalStateModel';
+import { WritableDraft } from 'immer/dist/types/types-external';
 
-import { iMealCategoriesList, iCurrentCategory } from '../interfaces/index.js';
+const findByIndex = (state: iGeneralState, payload: number) => {
+  return state.userFoodCategories.categories.findIndex((item: any) => item.id === payload);
+};
+
+const getCategoryItem = (draft: WritableDraft<Array<any>>, index: number) => {
+  return draft[index] as iCategoryModel;
+};
+
+const setCategoryVisibility = (category: iCategoryModel) => {
+  return (category.isVisible = !category.isVisible);
+};
+
+const findUpdateAndPush = (
+  state: iGeneralState,
+  payload: number,
+  draft: WritableDraft<Array<any>>
+) => {
+  const index = findByIndex(state, payload);
+
+  if (index !== -1) {
+    const category = getCategoryItem(draft, index);
+    draft.splice(index, 1);
+
+    setCategoryVisibility(category);
+
+    draft.push(category);
+  }
+};
 
 const reducers = {
   darkMode: (state: iGeneralState) => {
@@ -13,6 +43,25 @@ const reducers = {
   changeCurrentCategory: (state: iGeneralState, action: PayloadAction<iCurrentCategory>) => {
     const { payload } = action;
     state.userFoodCategories.current = payload;
+  },
+  removeCategory: (state: iGeneralState, action: PayloadAction<number>) => {
+    // TODO this remove by id is duplicated in bookmarking/state/reducers/r-helpers
+    const { payload } = action;
+
+    const updatedCategories = produce(state.userFoodCategories.categories, draft => {
+      findUpdateAndPush(state, payload, draft);
+    });
+
+    state.userFoodCategories.categories = [...updatedCategories];
+  },
+  addCategory: (state: iGeneralState, action: PayloadAction<number>) => {
+    const { payload } = action;
+
+    const updatedCategories = produce(state.userFoodCategories.categories, draft => {
+      findUpdateAndPush(state, payload, draft);
+    });
+
+    state.userFoodCategories.categories = [...updatedCategories];
   },
 };
 

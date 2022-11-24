@@ -3,11 +3,12 @@ import { useAppSelector } from '../../../app/hooks';
 import { getMealByCategoryAsync } from '../api/mealsByCategory';
 import { selectFoodCategoriesState, selectFoodState } from '../state/accessors';
 import { iUseMeals } from '../state/interfaces/index.js';
+import { PayloadAction } from '@reduxjs/toolkit';
 
 export function useMeals(): iUseMeals {
   const dispatch = useAppDispatch();
 
-  function fetchMeals(cat: string) {
+  function fetchMeals(cat: string): Promise<PayloadAction<any>> {
     return dispatch(getMealByCategoryAsync(cat));
   }
 

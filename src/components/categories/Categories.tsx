@@ -1,34 +1,11 @@
 import React, { ReactElement } from 'react';
-import styled from 'styled-components';
 import { useAppSelector } from '../../app/hooks';
 import { useCategory } from '../../features/general/hooks/useCategory';
 import { selectHeroObserver } from '../../features/page-observer/accessors';
 import CategoryCard from './CategoryCard';
+import { CategoryAnimation } from './moveLeftAnimation';
 import sharedStyled from '../../shared-styled/SharedStyled';
 const { DarkerDMSectionStyled } = sharedStyled;
-
-const CategoryAnimation: any = styled(DarkerDMSectionStyled)`
-  position: fixed;
-  top: 0;
-  z-index: 1;
-  padding-right: 0;
-  background-color: transparent;
-
-  animation-duration: 1.6s;
-  animation-name: fadeInOpacity;
-  animation-iteration-count: 1;
-  animation-direction: alternate;
-
-  @keyframes fadeInOpacity {
-    from {
-      opacity: 0.5;
-    }
-
-    to {
-      opacity: 1;
-    }
-  }
-`;
 
 export function Categories(): ReactElement {
   const { inView } = useAppSelector(selectHeroObserver);

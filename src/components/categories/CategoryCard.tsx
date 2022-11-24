@@ -1,35 +1,24 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { ReactElement } from 'react';
-import styled from 'styled-components';
-import { iCategoryModel } from '../../features/general/state/generalStateModel';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useMeals } from '../../features/general/hooks/useMeals';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useCategory } from '../../features/general/hooks/useCategory';
 import { selectHeroObserver } from '../../features/page-observer/accessors';
-
-const HoverStyle = styled.div`
-  &:hover {
-    opacity: 0.6 !important;
-    color: #444;
-  }
-
-  margin-bottom: 2em;
-  flex: 1;
-  cursor: pointer;
-  transition: all ease-in-out 0.5s;
-`;
-
-interface iCategoryCard {
-  category: iCategoryModel;
-  id: number;
-}
+import { iCategoryCard } from '../../features/general/state/interfaces/index.js';
+import { HoverStyle, HoverAddCard } from './hoverCard';
 
 const CategoryCard = ({ category, id }: iCategoryCard): ReactElement => {
   const dispatch = useAppDispatch();
-  const { AChangeCategory, current: selectedCategory } = useCategory();
+  const {
+    AChangeCategory,
+    current: selectedCategory,
+    ARemoveCategory,
+    AAddCategory,
+  } = useCategory();
   const { inView } = useAppSelector(selectHeroObserver);
 
-  const { text, icon } = category;
+  const { text, icon, isVisible } = category;
 
   const {
     food: { fetchMeals },
@@ -37,23 +26,45 @@ const CategoryCard = ({ category, id }: iCategoryCard): ReactElement => {
 
   const tileWidthStyles = inView ? { maxWidth: '125px', minWidth: '125px' } : {};
 
-  return (
+  return !isVisible ? (
+    <HoverAddCard
+      className="card mr-1 ml-1"
+      style={{
+        height: inView ? '132px' : '84px',
+        maxWidth: inView ? '125px' : '86px',
+        minWidth: inView ? '125px' : '86px',
+        opacity: '.3',
+      }}
+      onClick={() => dispatch(AAddCategory(category.id))}
+    >
+      <FontAwesomeIcon icon={faPlus} />
+    </HoverAddCard>
+  ) : (
     <HoverStyle
       key={`category-${id}`}
       className="card mr-1 ml-1 category-card"
       onClick={e => {
         e.preventDefault();
         dispatch(AChangeCategory(category));
-        fetchMeals(text);
+        fetchMeals(text).then(res => console.log(res));
       }}
       style={{
-        opacity: selectedCategory.text !== text ? '.4' : 1,
+        opacity: selectedCategory && selectedCategory.text === text ? 1 : 0.5,
+        fontWeight: selectedCategory && selectedCategory.text === text ? 'bold' : 200,
         ...tileWidthStyles,
         margin: '0 auto',
         marginBottom: '1em',
       }}
     >
-      <div className="card-content">
+      <div className="card-content" style={{ position: 'relative' }}>
+        <FontAwesomeIcon
+          icon={faTrashCan}
+          className={inView ? `category-bin p-2` : `category-bin p-0`}
+          onClick={e => {
+            e.stopPropagation();
+            return dispatch(ARemoveCategory(category.id));
+          }}
+        />
         <div className="media">
           <div className="media-left is-flex is-justify-content-center">
             <FontAwesomeIcon icon={icon} style={{ fontSize: '2.2em' }} />

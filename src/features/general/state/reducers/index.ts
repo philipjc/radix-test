@@ -54,6 +54,15 @@ const reducers = {
 
     state.userFoodCategories.categories = [...updatedCategories];
   },
+  addCategory: (state: iGeneralState, action: PayloadAction<number>) => {
+    const { payload } = action;
+
+    const updatedCategories = produce(state.userFoodCategories.categories, draft => {
+      findUpdateAndPush(state, payload, draft);
+    });
+
+    state.userFoodCategories.categories = [...updatedCategories];
+  },
 };
 
 const getCategoriesAsync = (builder: ActionReducerMapBuilder<iGeneralState>) => {

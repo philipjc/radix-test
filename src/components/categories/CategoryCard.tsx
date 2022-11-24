@@ -6,11 +6,16 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useCategory } from '../../features/general/hooks/useCategory';
 import { selectHeroObserver } from '../../features/page-observer/accessors';
 import { iCategoryCard } from '../../features/general/state/interfaces/index.js';
-import { HoverStyle } from './hoverCard';
+import { HoverStyle, HoverAddCard } from './hoverCard';
 
 const CategoryCard = ({ category, id }: iCategoryCard): ReactElement => {
   const dispatch = useAppDispatch();
-  const { AChangeCategory, current: selectedCategory, ARemoveCategory } = useCategory();
+  const {
+    AChangeCategory,
+    current: selectedCategory,
+    ARemoveCategory,
+    AAddCategory,
+  } = useCategory();
   const { inView } = useAppSelector(selectHeroObserver);
 
   const { text, icon, isVisible } = category;
@@ -22,31 +27,18 @@ const CategoryCard = ({ category, id }: iCategoryCard): ReactElement => {
   const tileWidthStyles = inView ? { maxWidth: '125px', minWidth: '125px' } : {};
 
   return !isVisible ? (
-    <div
+    <HoverAddCard
       className="card mr-1 ml-1"
       style={{
-        display: 'flex',
-        justifyContent: 'center',
-        fontWeight: 200,
         height: inView ? '132px' : '84px',
         maxWidth: inView ? '125px' : '86px',
         minWidth: inView ? '125px' : '86px',
-        marginBottom: '1em',
         opacity: '.3',
       }}
+      onClick={() => dispatch(AAddCategory(category.id))}
     >
-      <div
-        className="card-content column is-2 ml-auto mr-auto"
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: '2em',
-        }}
-      >
-        <FontAwesomeIcon icon={faPlus} />
-      </div>
-    </div>
+      <FontAwesomeIcon icon={faPlus} />
+    </HoverAddCard>
   ) : (
     <HoverStyle
       key={`category-${id}`}

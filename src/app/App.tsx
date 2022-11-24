@@ -32,13 +32,13 @@ function App(): ReactElement {
   return (
     <ThemeProvider theme={currentTheme}>
       <DMAppBackground className="App">
-        <DarkModeSwitch />
         <BrowserRouter>
           <Routes>
             <Route
               path="/"
               element={
                 <>
+                  <DarkModeSwitch />
                   <MainHero />
                   <Categories />
                   <MealsList />
@@ -49,6 +49,7 @@ function App(): ReactElement {
               path="/recipe/:recipeId"
               element={
                 <>
+                  <DarkModeSwitch />
                   <MealRecipe />
                 </>
               }

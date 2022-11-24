@@ -1,14 +1,35 @@
 import { ActionReducerMapBuilder, PayloadAction } from '@reduxjs/toolkit';
-import { iMeal } from '../../../general/api/mealsByCategory';
+import { iBookmarkingModel, iLikedMeal } from '../bookmarkingSliceModel';
+import { addItemToArray, removeItemById, isRecipeBookmarked } from './r-helpers';
 
 const someAsync = (builder: ActionReducerMapBuilder<any>) => {
   return builder;
 };
 
 const regularReducers = {
-  addLikedRecipe: (state: any, action: PayloadAction<iMeal>) => {
+  addLikedRecipe: (state: iBookmarkingModel, action: PayloadAction<iLikedMeal>) => {
     const { payload } = action;
-    return state;
+    const { likedMeals } = state;
+
+    const recipeAlreadyAdded = isRecipeBookmarked(likedMeals, payload);
+    if (recipeAlreadyAdded !== -1) return;
+
+    const updatedLikedMeals = addItemToArray(likedMeals, payload);
+
+    state.likedMeals = [...updatedLikedMeals];
+    state.hasLikes = state.likedMeals.length > 0;
+  },
+  removeLikedRecipe: (state: iBookmarkingModel, action: PayloadAction<iLikedMeal>) => {
+    const { payload } = action;
+    const { likedMeals } = state;
+
+    const recipeAlreadyAdded = isRecipeBookmarked(likedMeals, payload);
+    if (recipeAlreadyAdded === -1) return;
+
+    const updatedLikedMeals = removeItemById(likedMeals, payload);
+
+    state.likedMeals = [...updatedLikedMeals];
+    state.hasLikes = state.likedMeals.length > 0;
   },
 };
 

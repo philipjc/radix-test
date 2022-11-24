@@ -33,7 +33,7 @@ const DarkerDMSectionStyled = styled.section`
   }
 `;
 
-const DMDivStyled = styled.section`
+const DMDivStyled = styled.div`
   color: ${props => props.theme.colors.gray12};
   transition: background-color 0.8s;
   background-color: ${props => props.theme.colors.blue4};

@@ -1,8 +1,13 @@
 import { iMeal } from '../../general/api/mealsByCategory';
 
+export interface iLikedMeal {
+  id: string;
+  meal: iMeal;
+}
+
 export interface iBookmarkingModel {
   hasLikes: boolean;
-  likedMeals: Array<iMeal>;
+  likedMeals: Array<iLikedMeal>;
 }
 
 export const initialBMState: iBookmarkingModel = {

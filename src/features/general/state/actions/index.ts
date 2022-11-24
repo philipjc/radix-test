@@ -1,3 +1,3 @@
 import { generalSlice } from '../generalSlice';
 
-export const { darkMode, changeRecipeTab, changeCurrentCategory } = generalSlice.actions;
+export const { darkMode, changeCurrentCategory } = generalSlice.actions;

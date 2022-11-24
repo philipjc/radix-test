@@ -3,8 +3,8 @@ import * as SwitchPrimitive from '@radix-ui/react-switch';
 
 const StyledSwitch = styled(SwitchPrimitive.Root)`
   all: unset;
-  width: 42px;
-  height: 25px;
+  width: 52px;
+  height: 35px;
   border-radius: 9999px;
   position: relative;
   box-shadow: ${props => props.theme.colors.blue4};
@@ -22,7 +22,10 @@ const StyledSwitch = styled(SwitchPrimitive.Root)`
 `;
 
 const StyledThumb = styled(SwitchPrimitive.Thumb)`
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2em;
   width: 21px;
   height: 21px;
   background-color: grey;
@@ -34,6 +37,10 @@ const StyledThumb = styled(SwitchPrimitive.Thumb)`
 
   &[data-state='checked'] {
     transform: translateX(19px);
+  }
+
+  svg {
+    color: white;
   }
 `;
 

@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
-import { useMealRecipe } from '../../../../features/general/hooks/useMealRecipe';
+import { useMealRecipe } from '../../features/general/hooks/useMealRecipe';
 
-export function Instructions(): ReactElement {
+export function RecipeInstructions(): ReactElement {
   const { recipeState } = useMealRecipe();
   const { meals } = recipeState;
   const { strInstructions } = meals[0] || {};
@@ -14,7 +14,7 @@ export function Instructions(): ReactElement {
             return Number(line)
               ? null
               : line && (
-                  <li className="ml-0 mb-2 pl-0 is-size-5" key={`Instruction-line-${idx}`}>
+                  <li className="ml-0 mb-3 pl-0 is-size-6" key={`Instruction-line-${idx}`}>
                     {line}
                   </li>
                 );

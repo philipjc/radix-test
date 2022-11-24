@@ -1,9 +1,10 @@
 import { bookmarkingSlice } from '../bookmarkingSlice';
 
-const { addLikedRecipe } = bookmarkingSlice.actions;
+const { addLikedRecipe, removeLikedRecipe } = bookmarkingSlice.actions;
 
 const bookmarkingActions = {
   addLikedRecipe,
+  removeLikedRecipe,
 };
 
 export default bookmarkingActions;

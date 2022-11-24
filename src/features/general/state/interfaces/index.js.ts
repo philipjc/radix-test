@@ -2,6 +2,7 @@ import { iCategoryMealList, iMeal } from '../../api/mealsByCategory';
 import { iMealRecipeState } from '../../api/mealRecipe';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { iCategoryModel } from '../generalStateModel';
+import { PayloadAction } from '@reduxjs/toolkit';
 
 interface iGeneralStateFetching {
   status: 'idle' | 'loading' | 'failed';
@@ -36,7 +37,7 @@ export interface iMealCategoriesList {
 }
 
 interface FoodState {
-  fetchMeals: iCategoryMealList | any;
+  fetchMeals: (category: string) => Promise<PayloadAction<iCategoryMealList>>;
   foodState: Array<iMeal> | any;
 }
 

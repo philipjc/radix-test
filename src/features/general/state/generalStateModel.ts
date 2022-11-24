@@ -10,20 +10,19 @@ import {
   faHourglass,
   faIceCream,
   faLeaf,
-  faQuestion,
   IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 
-import lambIcon from '../../../assets/icons/noun-lamb-1881764.svg';
-import goatIcon from '../../../assets/icons/noun-goat-3582714.svg';
-import chewingIcon from '../../../assets/icons/noun-chewing-4049897.svg';
-import pastaIcon from '../../../assets/icons/noun-pasta-3096521.svg';
+// import lambIcon from '../../../assets/icons/noun-lamb-1881764.svg';
+// import goatIcon from '../../../assets/icons/noun-goat-3582714.svg';
+// import chewingIcon from '../../../assets/icons/noun-chewing-4049897.svg';
+// import pastaIcon from '../../../assets/icons/noun-pasta-3096521.svg';
 
 // TODO anything better?
-const goat = goatIcon as unknown as IconDefinition;
-const lamb = lambIcon as unknown as IconDefinition;
-const chewing = chewingIcon as unknown as IconDefinition;
-const pasta = pastaIcon as unknown as IconDefinition;
+// const goat = goatIcon as unknown as IconDefinition;
+// const lamb = lambIcon as unknown as IconDefinition;
+// const chewing = chewingIcon as unknown as IconDefinition;
+// const pasta = pastaIcon as unknown as IconDefinition;
 
 export interface iCategoryModel {
   text: string;

@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faTrashCan, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useMeals } from '../../features/general/hooks/useMeals';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useCategory } from '../../features/general/hooks/useCategory';
@@ -13,7 +13,7 @@ const CategoryCard = ({ category, id }: iCategoryCard): ReactElement => {
   const { AChangeCategory, current: selectedCategory, ARemoveCategory } = useCategory();
   const { inView } = useAppSelector(selectHeroObserver);
 
-  const { text, icon } = category;
+  const { text, icon, isVisible } = category;
 
   const {
     food: { fetchMeals },
@@ -21,17 +21,43 @@ const CategoryCard = ({ category, id }: iCategoryCard): ReactElement => {
 
   const tileWidthStyles = inView ? { maxWidth: '125px', minWidth: '125px' } : {};
 
-  return (
+  return !isVisible ? (
+    <div
+      className="card mr-1 ml-1"
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        fontWeight: 200,
+        height: '132px',
+        maxWidth: '125px',
+        minWidth: '125px',
+        marginBottom: '1em',
+        opacity: '.3',
+      }}
+    >
+      <div
+        className="card-content column is-2 ml-auto mr-auto"
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          fontSize: '2em',
+        }}
+      >
+        <FontAwesomeIcon icon={faPlus} />
+      </div>
+    </div>
+  ) : (
     <HoverStyle
       key={`category-${id}`}
       className="card mr-1 ml-1 category-card"
       onClick={e => {
         e.preventDefault();
         dispatch(AChangeCategory(category));
-        fetchMeals(text);
+        fetchMeals(text).then(res => console.log(res));
       }}
       style={{
-        opacity: selectedCategory && selectedCategory.text === text ? 1 : 0.4,
+        opacity: selectedCategory && selectedCategory.text === text ? 1 : 0.5,
         fontWeight: selectedCategory && selectedCategory.text === text ? 'bold' : 200,
         ...tileWidthStyles,
         margin: '0 auto',

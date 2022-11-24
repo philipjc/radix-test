@@ -1,13 +1,11 @@
 import { iGeneralState } from '../interfaces/index.js';
+import produce from 'immer';
 import { ActionReducerMapBuilder, PayloadAction } from '@reduxjs/toolkit';
 import { getMealCategoriesAsync } from '../../api/mealCategories';
 import { getMealByCategoryAsync, iCategoryMealList } from '../../api/mealsByCategory';
 import { getMealRecipeAsync, iMealRecipeState } from '../../api/mealRecipe';
 
 import { iMealCategoriesList, iCurrentCategory } from '../interfaces/index.js';
-import { iLikedMeal } from '../../../bookmarking/state/bookmarkingSliceModel';
-import produce from 'immer';
-import { isRecipeBookmarked } from '../../../bookmarking/state/reducers/r-helpers';
 import { iCategoryModel } from '../generalStateModel';
 
 const reducers = {
@@ -21,15 +19,18 @@ const reducers = {
   removeCategory: (state: iGeneralState, action: PayloadAction<number>) => {
     // TODO this remove by id is duplicated in bookmarking/state/reducers/r-helpers
     const { payload } = action;
+
     const updatedCategories = produce(state.userFoodCategories.categories, draft => {
       const index = state.userFoodCategories.categories.findIndex(
         (item: any) => item.id === payload
       );
 
-      const category = draft[index] as iCategoryModel;
-
       if (index !== -1) {
+        const category = draft[index] as iCategoryModel;
+        draft.splice(index, 1);
+
         category.isVisible = false;
+        draft.push(category);
       }
     });
 

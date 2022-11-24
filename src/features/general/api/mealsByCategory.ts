@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { AsyncThunk, createAsyncThunk } from '@reduxjs/toolkit';
 
 export interface iMeal {
   strMeal: string;
@@ -8,7 +8,7 @@ export interface iMeal {
 
 export interface iCategoryMealList {
   fetching: boolean;
-  meals: Array<iMeal>;
+  meals: Array<iMeal | []>;
 }
 
 function fetchMealByCategory(type: string): Promise<iCategoryMealList> {
@@ -24,7 +24,7 @@ function fetchMealByCategory(type: string): Promise<iCategoryMealList> {
   });
 }
 
-export const getMealByCategoryAsync = createAsyncThunk(
+export const getMealByCategoryAsync: AsyncThunk<any, any, any> = createAsyncThunk(
   'general/fetchMealByCategory',
   async (type: string): Promise<iCategoryMealList> => {
     try {

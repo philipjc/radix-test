@@ -42,11 +42,11 @@ export const CATEGORY_OPTIONS: Array<iCategoryModel> = [
   { text: 'Pork', id: 7, icon: faBacon, isVisible: true },
   { text: 'Beef', id: 8, icon: faCow, isVisible: true },
   { text: 'Dessert', id: 9, icon: faIceCream, isVisible: true },
-  { text: 'Lamb', id: 10, icon: lamb, isVisible: false },
-  { text: 'Miscellaneous', id: 11, icon: faQuestion, isVisible: false },
-  { text: 'Pasta', id: 12, icon: pasta, isVisible: false },
-  { text: 'Side', id: 13, icon: chewing, isVisible: false },
-  { text: 'Goat', id: 14, icon: goat, isVisible: false },
+  // { text: 'Lamb', id: 10, icon: lamb, isVisible: false },
+  // { text: 'Miscellaneous', id: 11, icon: faQuestion, isVisible: false },
+  // { text: 'Pasta', id: 12, icon: pasta, isVisible: false },
+  // { text: 'Side', id: 13, icon: chewing, isVisible: false },
+  // { text: 'Goat', id: 14, icon: goat, isVisible: false },
 ];
 
 export const initialState: iGeneralState = {

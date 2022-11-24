@@ -28,9 +28,9 @@ const CategoryCard = ({ category, id }: iCategoryCard): ReactElement => {
         display: 'flex',
         justifyContent: 'center',
         fontWeight: 200,
-        height: '132px',
-        maxWidth: '125px',
-        minWidth: '125px',
+        height: inView ? '132px' : '84px',
+        maxWidth: inView ? '125px' : '86px',
+        minWidth: inView ? '125px' : '86px',
         marginBottom: '1em',
         opacity: '.3',
       }}
@@ -67,7 +67,7 @@ const CategoryCard = ({ category, id }: iCategoryCard): ReactElement => {
       <div className="card-content" style={{ position: 'relative' }}>
         <FontAwesomeIcon
           icon={faTrashCan}
-          className="category-bin p-2"
+          className={inView ? `category-bin p-2` : `category-bin p-0`}
           onClick={e => {
             e.stopPropagation();
             return dispatch(ARemoveCategory(category.id));

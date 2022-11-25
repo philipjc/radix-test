@@ -10,12 +10,13 @@ import {
   faHourglass,
   faIceCream,
   faLeaf,
+  faQuestion,
   IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 
-// import lambIcon from '../../../assets/icons/noun-lamb-1881764.svg';
-// import goatIcon from '../../../assets/icons/noun-goat-3582714.svg';
 // import chewingIcon from '../../../assets/icons/noun-chewing-4049897.svg';
+// import goatIcon from '../../../assets/icons/noun-goat-3582714.svg';
+// import lambIcon from '../../../assets/icons/noun-lamb-1881764.svg';
 // import pastaIcon from '../../../assets/icons/noun-pasta-3096521.svg';
 
 // TODO anything better?
@@ -41,11 +42,14 @@ export const CATEGORY_OPTIONS: Array<iCategoryModel> = [
   { text: 'Pork', id: 7, icon: faBacon, isVisible: true },
   { text: 'Beef', id: 8, icon: faCow, isVisible: true },
   { text: 'Dessert', id: 9, icon: faIceCream, isVisible: true },
-  // { text: 'Lamb', id: 10, icon: lamb, isVisible: false },
-  // { text: 'Miscellaneous', id: 11, icon: faQuestion, isVisible: false },
-  // { text: 'Pasta', id: 12, icon: pasta, isVisible: false },
-  // { text: 'Side', id: 13, icon: chewing, isVisible: false },
-  // { text: 'Goat', id: 14, icon: goat, isVisible: false },
+];
+
+export const EXTRA_CATEGORIES: Array<iCategoryModel> = [
+  { text: 'Lamb', id: 10, icon: faQuestion, isVisible: true },
+  { text: 'Miscellaneous', id: 11, icon: faQuestion, isVisible: true },
+  { text: 'Pasta', id: 12, icon: faQuestion, isVisible: true },
+  { text: 'Side', id: 13, icon: faQuestion, isVisible: true },
+  { text: 'Goat', id: 14, icon: faQuestion, isVisible: true },
 ];
 
 export const initialState: iGeneralState = {
@@ -59,6 +63,7 @@ export const initialState: iGeneralState = {
     categories: [],
   },
   userFoodCategories: {
+    extraCategories: EXTRA_CATEGORIES,
     categories: CATEGORY_OPTIONS,
     current: null,
   },

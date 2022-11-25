@@ -2,9 +2,9 @@ import React, { ReactElement } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { useCategory } from '../../features/general/hooks/useCategory';
 import { selectHeroObserver } from '../../features/page-observer/accessors';
+import sharedStyled from '../../shared-styled/SharedStyled';
 import CategoryCard from './CategoryCard';
 import { CategoryAnimation } from './moveLeftAnimation';
-import sharedStyled from '../../shared-styled/SharedStyled';
 const { DarkerDMSectionStyled } = sharedStyled;
 
 export function Categories(): ReactElement {

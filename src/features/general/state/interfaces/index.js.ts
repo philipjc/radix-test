@@ -20,7 +20,8 @@ export interface iCategoryCard {
 }
 
 interface iUserFoodCategories {
-  categories: Array<object>;
+  extraCategories: Array<iCategoryModel>;
+  categories: Array<iCategoryModel>;
   current: iCurrentCategory | null;
 }
 

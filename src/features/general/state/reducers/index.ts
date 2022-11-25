@@ -1,11 +1,11 @@
-import { iCurrentCategory, iGeneralState, iMealCategoriesList } from '../interfaces/index.js';
-import produce from 'immer';
 import { ActionReducerMapBuilder, PayloadAction } from '@reduxjs/toolkit';
-import { getMealCategoriesAsync } from '../../api/mealCategories';
-import { getMealByCategoryAsync, iCategoryMealList } from '../../api/mealsByCategory';
-import { getMealRecipeAsync, iMealRecipeState } from '../../api/mealRecipe';
-import { iCategoryModel } from '../generalStateModel';
+import produce from 'immer';
 import { WritableDraft } from 'immer/dist/types/types-external';
+import { getMealCategoriesAsync } from '../../api/mealCategories';
+import { getMealRecipeAsync, iMealRecipeState } from '../../api/mealRecipe';
+import { getMealByCategoryAsync, iCategoryMealList } from '../../api/mealsByCategory';
+import { iCategoryModel } from '../generalStateModel';
+import { iCurrentCategory, iGeneralState, iMealCategoriesList } from '../interfaces/index.js';
 
 const findByIndex = (state: iGeneralState, payload: number) => {
   return state.userFoodCategories.categories.findIndex((item: any) => item.id === payload);
@@ -56,12 +56,28 @@ const reducers = {
   },
   addCategory: (state: iGeneralState, action: PayloadAction<number>) => {
     const { payload } = action;
+    const currentList = state.userFoodCategories.categories;
+    const extraList = state.userFoodCategories.extraCategories;
+
+    const falseCatIndex: any = currentList.findIndex((c: any) => c.isVisible === false);
+    const falseCatObj: any = currentList.find((c: any) => c.isVisible === false);
+
+    const extraCatIndex: any = extraList.findIndex((c: any) => c.id === payload);
+    const extraCatObj: any = extraList.find((c: any) => c.id === payload);
 
     const updatedCategories = produce(state.userFoodCategories.categories, draft => {
-      findUpdateAndPush(state, payload, draft);
+      draft[falseCatIndex].text = extraCatObj.text;
+      draft[falseCatIndex].icon = extraCatObj.icon;
+      draft[falseCatIndex].isVisible = true;
+    });
+    const updatedExtraCategories = produce(state.userFoodCategories.extraCategories, draft => {
+      draft[extraCatIndex].text = falseCatObj.text;
+      draft[extraCatIndex].icon = falseCatObj.icon;
+      draft[extraCatIndex].isVisible = false;
     });
 
     state.userFoodCategories.categories = [...updatedCategories];
+    state.userFoodCategories.extraCategories = [...updatedExtraCategories];
   },
 };
 

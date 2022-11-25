@@ -1,11 +1,13 @@
-import { selectUserCategoriesState } from '../state/accessors';
-import { useAppSelector } from '../../../app/hooks';
-import { changeCurrentCategory, removeCategory, addCategory } from '../state/actions';
-import { iCurrentCategory } from '../state/interfaces/index.js';
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit';
+import { useAppSelector } from '../../../app/hooks';
+import { selectUserCategoriesState } from '../state/accessors';
+import { addCategory, changeCurrentCategory, removeCategory } from '../state/actions';
+import { iCategoryModel } from '../state/generalStateModel';
+import { iCurrentCategory } from '../state/interfaces/index.js';
 
 interface iUseCategory {
-  categories: {}[];
+  extraCategories: Array<iCategoryModel>;
+  categories: Array<iCategoryModel>;
   current: iCurrentCategory | null;
   AChangeCategory: ActionCreatorWithPayload<iCurrentCategory>;
   ARemoveCategory: ActionCreatorWithPayload<number>;
@@ -13,9 +15,10 @@ interface iUseCategory {
 }
 
 export function useCategory(): iUseCategory {
-  const { categories, current } = useAppSelector(selectUserCategoriesState);
+  const { categories, current, extraCategories } = useAppSelector(selectUserCategoriesState);
 
   return {
+    extraCategories,
     categories,
     current,
     AChangeCategory: changeCurrentCategory,
